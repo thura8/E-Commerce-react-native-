@@ -1,0 +1,41 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Fredoka-Light.ttf",
+      "sha1": "358f7fd527e77fc5e95a9db210d1a0e74ce2f37e"
+    },
+    {
+      "path": "src/assets/fonts/Fredoka-Regular.ttf",
+      "sha1": "753b91e83586d517b993f5ae5666cb4f2f29cbbe"
+    },
+    {
+      "path": "src/assets/fonts/Fredoka-SemiBold.ttf",
+      "sha1": "10738d8e8510bbd602eff944e35fc57254425f2e"
+    },
+    {
+      "path": "src/assets/fonts/index.js",
+      "sha1": "ffd03798d281f0f2dbd612f884e44af6bee20749"
+    },
+    {
+      "path": "src/assets/fonts/Inter_24pt-Regular.ttf",
+      "sha1": "b9984093c0b2b612da5e58e4d4e1ba8c255353dc"
+    },
+    {
+      "path": "src/assets/fonts/Inter_24pt-SemiBold.ttf",
+      "sha1": "ee81756dc9685877077aae9027708aa84bc56027"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Regular.ttf",
+      "sha1": "1c8119b38eef1914a4fbd9f6cfdedf198445ab97"
+    },
+    {
+      "path": "src/assets/fonts/Poppins-Light.ttf",
+      "sha1": "e247a92158e112f8bf7b638c8d95381d66b00dbb"
+    },
+    {
+      "path": "src/assets/fonts/Poppins-Regular.ttf",
+      "sha1": "fdd3002e7d814ee47c1c1b8487c72c6bbb3a2d00"
+    }
+  ]
+}
