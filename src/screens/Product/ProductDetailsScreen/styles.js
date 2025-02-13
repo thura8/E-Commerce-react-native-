@@ -82,7 +82,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -97,23 +96,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: colors.black,
-  },
-  quantityContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.hotPink,
-    borderRadius: 20,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-  },
-  quantityButton: {
-    backgroundColor: 'transparent',
-  },
-  quantity: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: colors.white,
-    marginHorizontal: 12,
   },
   sectionContainer: {
     marginBottom: 20,

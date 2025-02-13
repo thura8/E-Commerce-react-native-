@@ -20,13 +20,10 @@ const ProductDetailsScreen = ({route}) => {
   const goBack = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
-  const [quantity, setQuantity] = useState(0);
+
   const scrollY = useRef(new Animated.Value(0)).current;
 
   const dispatch = useDispatch();
-
-  const handleIncrement = () => setQuantity(quantity + 1);
-  const handleDecrement = () => quantity > 0 && setQuantity(quantity - 1);
 
   const headerOpacity = scrollY.interpolate({
     inputRange: [0, 100],
@@ -48,6 +45,7 @@ const ProductDetailsScreen = ({route}) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+    navigation.navigate('Cart');
   };
 
   return (
@@ -96,6 +94,18 @@ const ProductDetailsScreen = ({route}) => {
 
         <View style={styles.content}>
           <View style={styles.actionRow}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Tags</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={styles.tagsContainer}>
+                  {product?.tags?.map((tag, index) => (
+                    <View style={styles.tag} key={index}>
+                      <Text style={styles.tagText}>{tag}</Text>
+                    </View>
+                  ))}
+                </View>
+              </ScrollView>
+            </View>
             <View style={styles.ratingContainer}>
               <FastImage
                 source={require('@assets/icons/Rating/star.png')}
@@ -103,36 +113,6 @@ const ProductDetailsScreen = ({route}) => {
               />
               <Text style={styles.rating}>{product?.rating}</Text>
             </View>
-            <View style={styles.quantityContainer}>
-              <ButtonInput
-                icon="Minus"
-                btnCtnStyle={styles.quantityButton}
-                iconColor={colors.white}
-                iconSize={20}
-                onPress={handleDecrement}
-              />
-              <Text style={styles.quantity}>{quantity}</Text>
-              <ButtonInput
-                icon="Plus"
-                btnCtnStyle={styles.quantityButton}
-                iconColor={colors.white}
-                iconSize={20}
-                onPress={handleIncrement}
-              />
-            </View>
-          </View>
-
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Tags</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <View style={styles.tagsContainer}>
-                {product?.tags?.map((tag, index) => (
-                  <View style={styles.tag} key={index}>
-                    <Text style={styles.tagText}>{tag}</Text>
-                  </View>
-                ))}
-              </View>
-            </ScrollView>
           </View>
 
           <ProductImageCarousel images={product?.images} />
