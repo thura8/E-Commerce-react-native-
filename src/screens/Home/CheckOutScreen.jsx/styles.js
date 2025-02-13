@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.fredokaSemiBold,
     letterSpacing: 0.8,
     color: colors.black,
-    marginBottom: 16,
+    marginBottom: 8,
   },
   paymentOptions: {
     flexDirection: 'row',
@@ -104,5 +104,52 @@ export const styles = StyleSheet.create({
   },
   halfInput: {
     flex: 1,
+  },
+  summary: {
+    backgroundColor: colors.white,
+    borderRadius: 20,
+    marginTop: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  summaryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  summaryLabel: {
+    color: colors.black,
+    fontFamily: fonts.interReg,
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  summaryValue: {
+    fontWeight: '600',
+  },
+  totalRow: {
+    paddingTop: 10,
+  },
+  totalLabel: {
+    fontFamily: fonts.fredokaSemiBold,
+    fontSize: 18,
+    color: colors.black,
+    letterSpacing: 0.8,
+  },
+  totalValue: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  placeOrderButton: {
+    marginTop: 12,
+    marginHorizontal: 16,
+    padding: 18,
+    borderRadius: 30,
+    alignItems: 'center',
+  },
+  placeOrderText: {
+    color: colors.white,
+    fontFamily: fonts.fredokaSemiBold,
+    fontSize: 19,
+    letterSpacing: 0.8,
   },
 });

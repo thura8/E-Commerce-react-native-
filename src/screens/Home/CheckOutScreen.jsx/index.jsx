@@ -6,6 +6,7 @@ import {CreditCard, MoreVertical} from 'lucide-react-native';
 import {styles} from './styles';
 import {paymentOptions} from '@constants/common';
 import {colors} from '@constants/colors';
+import LinearGradient from 'react-native-linear-gradient';
 
 const CheckOutScreen = () => {
   const [selectedPayment, setSelectedPayment] = useState('visa');
@@ -76,6 +77,35 @@ const CheckOutScreen = () => {
             />
           </View>
         </View>
+
+        <View style={styles.summary}>
+          <View style={styles.summaryRow}>
+            <Text style={styles.summaryLabel}>Subtotal</Text>
+            <Text style={styles.summaryValue}>$235.00</Text>
+          </View>
+          <View style={styles.summaryRow}>
+            <Text style={styles.summaryLabel}>Shipping</Text>
+            <Text style={styles.summaryValue}>$24.36</Text>
+          </View>
+          <View style={styles.summaryRow}>
+            <Text style={styles.summaryLabel}>Discount</Text>
+            <Text style={styles.summaryValue}>-$20.00</Text>
+          </View>
+          <View style={[styles.summaryRow, styles.totalRow]}>
+            <Text style={styles.totalLabel}>Total</Text>
+            <Text style={styles.totalValue}>$239.36</Text>
+          </View>
+        </View>
+
+        <TouchableOpacity>
+          <LinearGradient
+            colors={[colors.hotPink, colors.purple]}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            style={styles.placeOrderButton}>
+            <Text style={styles.placeOrderText}>Place Order</Text>
+          </LinearGradient>
+        </TouchableOpacity>
       </View>
     </ContainerLayout>
   );
