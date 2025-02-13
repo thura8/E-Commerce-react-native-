@@ -11,6 +11,7 @@ import SignUpScreen from '@screens/Auth/SignUpScreen';
 import CategoryScreen from '@screens/Home/CategoryScreen';
 import CartScreen from '@screens/Home/CartScreen';
 import CategoryProductsScreen from '@screens/Home/CategoryProductsScreen';
+import CheckOutScreen from '@screens/Home/CheckOutScreen.jsx';
 
 export const authNavigations = [
   {
@@ -55,5 +56,9 @@ export const dashBoardNavigations = [
   {
     name: 'CategoryProducts',
     component: CategoryProductsScreen,
+  },
+  {
+    name: 'CheckOut',
+    component: CheckOutScreen,
   },
 ];

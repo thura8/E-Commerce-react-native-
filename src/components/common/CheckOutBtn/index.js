@@ -21,6 +21,7 @@ import {
 } from '@store/selectors';
 import {formattedMoney} from '@helper/index';
 import {format} from 'accounting-js';
+import {useNavigation} from '@react-navigation/native';
 
 const CheckOutBtn = ({
   subtotal,
@@ -32,6 +33,8 @@ const CheckOutBtn = ({
   const [isExpanded, setIsExpanded] = useState(true);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const arrowRotation = useRef(new Animated.Value(0)).current;
+
+  const navigation = useNavigation();
 
   const toggleContainer = () => {
     Animated.parallel([
@@ -100,7 +103,7 @@ const CheckOutBtn = ({
       <TouchableOpacity
         activeOpacity={0.9}
         style={styles.checkoutButton}
-        onPress={() => console.log('Proceed to Checkout')}>
+        onPress={() => navigation.navigate('CheckOut')}>
         <LinearGradient
           colors={[colors.hotPink, colors.lightPink]}
           style={styles.gradientBackground}
