@@ -11,6 +11,8 @@ import ProductImageCarousel from '@components/Product/ProductCarousel';
 import {formattedMoney} from '@helper/index';
 import {colors} from '@constants/colors';
 import {styles} from './styles';
+import {useDispatch} from 'react-redux';
+import {addToCart} from '@store/actions/actions';
 
 const ProductDetailsScreen = ({route}) => {
   const product = route.params;
@@ -20,6 +22,8 @@ const ProductDetailsScreen = ({route}) => {
   }, [navigation]);
   const [quantity, setQuantity] = useState(0);
   const scrollY = useRef(new Animated.Value(0)).current;
+
+  const dispatch = useDispatch();
 
   const handleIncrement = () => setQuantity(quantity + 1);
   const handleDecrement = () => quantity > 0 && setQuantity(quantity - 1);
@@ -41,6 +45,10 @@ const ProductDetailsScreen = ({route}) => {
     outputRange: [0, 1],
     extrapolate: 'clamp',
   });
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <ContainerLayout paddingEnabled={false} noScroll bgColor={colors.white}>
@@ -223,7 +231,7 @@ const ProductDetailsScreen = ({route}) => {
           iconSize={24}
           btnTxt="Add to Cart"
           btnTxtStyle={styles.addToCartText}
-          onPress={() => navigate('Cart')}
+          onPress={handleAddToCart}
         />
       </View>
     </ContainerLayout>
