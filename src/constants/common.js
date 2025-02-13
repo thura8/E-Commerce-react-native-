@@ -195,3 +195,18 @@ export const authSwitchOptions = [
 export const REQUEST = 'FETCH_REQUEST';
 export const SUCCESS = 'FETCH_SUCCESS';
 export const FAILURE = 'FETCH_FAILURE';
+
+export const paymentOptions = [
+  {
+    name: 'visa',
+    image: require('@assets/images/payment_options/visa.png'),
+  },
+  {
+    name: 'paypal',
+    image: require('@assets/images/payment_options/paypal.png'),
+  },
+  {
+    name: 'mastercard',
+    image: require('@assets/images/payment_options/mastercard.png'),
+  },
+];
