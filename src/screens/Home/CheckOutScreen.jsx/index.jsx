@@ -9,8 +9,17 @@ import {colors} from '@constants/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import ButtonInput from '@components/common/ButtonInput';
+import {formattedMoney} from '@helper/index';
+import {
+  selectSubtotal,
+  selectDeliveryFee,
+  selectTotalDiscount,
+  selectTotal,
+  selectTotalOriginalPrice,
+} from '@store/selectors';
+import {connect} from 'react-redux';
 
-const CheckOutScreen = () => {
+const CheckOutScreen = ({subtotal, deliveryFee, discount, total}) => {
   const [selectedPayment, setSelectedPayment] = useState('visa');
   const {navigate} = useNavigation();
 
@@ -84,19 +93,21 @@ const CheckOutScreen = () => {
         <View style={styles.summary}>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Subtotal</Text>
-            <Text style={styles.summaryValue}>$235.00</Text>
+            <Text style={styles.summaryValue}>{formattedMoney(subtotal)}</Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Shipping</Text>
-            <Text style={styles.summaryValue}>$24.36</Text>
+            <Text style={styles.summaryLabel}>Delivery Fee</Text>
+            <Text style={styles.summaryValue}>
+              {formattedMoney(deliveryFee)}
+            </Text>
           </View>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Discount</Text>
-            <Text style={styles.summaryValue}>-$20.00</Text>
+            <Text style={styles.summaryValue}>-{formattedMoney(discount)}</Text>
           </View>
           <View style={[styles.summaryRow, styles.totalRow]}>
             <Text style={styles.totalLabel}>Total</Text>
-            <Text style={styles.totalValue}>$239.36</Text>
+            <Text style={styles.totalValue}>{formattedMoney(total)}</Text>
           </View>
 
           <ButtonInput onPress={() => navigate('NothingPage')}>
@@ -113,5 +124,12 @@ const CheckOutScreen = () => {
     </ContainerLayout>
   );
 };
+const mapStateToProps = state => ({
+  subtotal: selectSubtotal(state),
+  deliveryFee: selectDeliveryFee(state),
+  discount: selectTotalDiscount(state),
+  total: selectTotal(state),
+  totalOriginalPrice: selectTotalOriginalPrice(state),
+});
 
-export default CheckOutScreen;
+export default connect(mapStateToProps)(CheckOutScreen);

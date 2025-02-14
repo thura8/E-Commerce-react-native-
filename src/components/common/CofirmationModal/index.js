@@ -55,20 +55,21 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: 300,
-    backgroundColor: colors.bgWhite,
+    backgroundColor: colors.white,
     borderRadius: 12,
     padding: 20,
     alignItems: 'center',
   },
   title: {
     fontFamily: fonts.poppinsReg,
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: '600',
     color: colors.black,
     marginBottom: 10,
   },
   message: {
-    fontFamily: fonts.fredokaLight,
-    fontSize: 16,
+    fontFamily: fonts.interReg,
+    fontSize: 17,
     color: colors.gray,
     textAlign: 'center',
     marginBottom: 20,
@@ -95,13 +96,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cancelText: {
-    fontFamily: fonts.fredokaLight,
+    fontFamily: fonts.fredokaSemiBold,
     fontSize: 16,
     color: colors.black,
   },
   confirmText: {
-    fontFamily: fonts.fredokaLight,
+    fontFamily: fonts.fredokaSemiBold,
     fontSize: 16,
-    color: colors.bgWhite,
+    color: colors.white,
   },
 });
