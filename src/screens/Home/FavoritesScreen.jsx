@@ -1,4 +1,3 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 
 import ContainerLayout from '@components/common/ContainerLayout';
@@ -10,11 +9,19 @@ const FavoritesScreen = () => {
 
   return (
     <ContainerLayout header headerTitle="Your Picks" noScroll={!isSaved}>
-      {isSaved ? <FavItems /> : <NothingPage />}
+      {isSaved ? (
+        <FavItems />
+      ) : (
+        <NothingPage
+          checkout={false}
+          icon="Heart"
+          title="No Saved Items!"
+          subtitle="You don't have any saved items."
+          description="Go to home and add some."
+        />
+      )}
     </ContainerLayout>
   );
 };
 
 export default FavoritesScreen;
-
-const styles = StyleSheet.create({});

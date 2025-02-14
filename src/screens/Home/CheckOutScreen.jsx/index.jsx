@@ -7,9 +7,12 @@ import {styles} from './styles';
 import {paymentOptions} from '@constants/common';
 import {colors} from '@constants/colors';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
+import ButtonInput from '@components/common/ButtonInput';
 
 const CheckOutScreen = () => {
   const [selectedPayment, setSelectedPayment] = useState('visa');
+  const {navigate} = useNavigation();
 
   return (
     <ContainerLayout header headerTitle="Checkout">
@@ -95,17 +98,17 @@ const CheckOutScreen = () => {
             <Text style={styles.totalLabel}>Total</Text>
             <Text style={styles.totalValue}>$239.36</Text>
           </View>
-        </View>
 
-        <TouchableOpacity>
-          <LinearGradient
-            colors={[colors.hotPink, colors.purple]}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            style={styles.placeOrderButton}>
-            <Text style={styles.placeOrderText}>Place Order</Text>
-          </LinearGradient>
-        </TouchableOpacity>
+          <ButtonInput onPress={() => navigate('NothingPage')}>
+            <LinearGradient
+              colors={[colors.hotPink, colors.lightPink]}
+              start={{x: 0, y: 0}}
+              end={{x: 1, y: 0}}
+              style={styles.placeOrderButton}>
+              <Text style={styles.placeOrderText}>Place Order</Text>
+            </LinearGradient>
+          </ButtonInput>
+        </View>
       </View>
     </ContainerLayout>
   );

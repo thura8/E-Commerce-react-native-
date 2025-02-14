@@ -30,6 +30,7 @@ const CartScreen = () => {
           title="Your cart is empty"
           description="appear here "
           subtitle="When you add products, they'll"
+          checkout={false}
         />
       ) : (
         <>

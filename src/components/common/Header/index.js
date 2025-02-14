@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
@@ -36,9 +36,9 @@ const Header = ({title, showLeft, cartIcon, logOutIcon}) => {
       {(logOutIcon || cartIcon) && (
         <View style={styles.iconContainer}>
           {logOutIcon ? (
-            <TouchableOpacity onPress={handleLogOut}>
+            <ButtonInput onPress={handleLogOut}>
               <LogOutIcon color={colors.white} strokeWidth={3} />
-            </TouchableOpacity>
+            </ButtonInput>
           ) : (
             <ShoppingCart color={colors.white} size={28} strokeWidth={3} />
           )}

@@ -4,14 +4,15 @@ import ProductSearchScreen from '@screens/Product/ProductSearchScreen';
 import FavoritesScreen from '@screens/Home/FavoritesScreen';
 import ProductDetailsScreen from '@screens/Product/ProductDetailsScreen/ProductDetailsScreen';
 import AccountScreen from '@screens/Home/AccountScreen';
-
-//Auth imports
-import LoginScreen from '@screens/Auth/LoginScreen';
-import SignUpScreen from '@screens/Auth/SignUpScreen';
 import CategoryScreen from '@screens/Home/CategoryScreen';
 import CartScreen from '@screens/Home/CartScreen';
 import CategoryProductsScreen from '@screens/Home/CategoryProductsScreen';
 import CheckOutScreen from '@screens/Home/CheckOutScreen.jsx';
+import NothingPage from '@components/common/NothingPage';
+
+//Auth imports
+import LoginScreen from '@screens/Auth/LoginScreen';
+import SignUpScreen from '@screens/Auth/SignUpScreen';
 
 export const authNavigations = [
   {
@@ -60,5 +61,9 @@ export const dashBoardNavigations = [
   {
     name: 'CheckOut',
     component: CheckOutScreen,
+  },
+  {
+    name: 'NothingPage',
+    component: NothingPage,
   },
 ];

@@ -1,12 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Animated,
-  TouchableOpacity,
-  Easing,
-} from 'react-native';
+import {View, Text, StyleSheet, Animated, Easing} from 'react-native';
 import {connect} from 'react-redux';
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
@@ -20,8 +13,8 @@ import {
   selectTotalOriginalPrice,
 } from '@store/selectors';
 import {formattedMoney} from '@helper/index';
-import {format} from 'accounting-js';
 import {useNavigation} from '@react-navigation/native';
+import ButtonInput from '../ButtonInput';
 
 const CheckOutBtn = ({
   subtotal,
@@ -69,14 +62,14 @@ const CheckOutBtn = ({
         styles.checkoutContainer,
         {transform: [{translateY: containerTransform}]},
       ]}>
-      <TouchableOpacity
-        style={styles.arrowButton}
+      <ButtonInput
+        btnCtnStyle={styles.arrowButton}
         onPress={toggleContainer}
         activeOpacity={0.8}>
         <Animated.View style={{transform: [{rotate: arrowTransform}]}}>
           <ChevronDown color={colors.black} />
         </Animated.View>
-      </TouchableOpacity>
+      </ButtonInput>
 
       <View style={styles.priceDetailsContainer}>
         <View style={styles.priceRow}>
@@ -100,9 +93,9 @@ const CheckOutBtn = ({
         </View>
       </View>
 
-      <TouchableOpacity
+      <ButtonInput
         activeOpacity={0.9}
-        style={styles.checkoutButton}
+        btnCtnStyle={styles.checkoutButton}
         onPress={() => navigation.navigate('CheckOut')}>
         <LinearGradient
           colors={[colors.hotPink, colors.lightPink]}
@@ -111,7 +104,7 @@ const CheckOutBtn = ({
           end={{x: 1, y: 0}}>
           <Text style={styles.buttonText}>Proceed to Checkout</Text>
         </LinearGradient>
-      </TouchableOpacity>
+      </ButtonInput>
     </Animated.View>
   );
 };

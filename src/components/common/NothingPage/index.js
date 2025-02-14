@@ -3,14 +3,19 @@ import React from 'react';
 import * as LucideIcons from 'lucide-react-native';
 import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
+import ContainerLayout from '../ContainerLayout';
+import ButtonInput from '../ButtonInput';
+import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
 
 const NothingPage = ({
-  icon = 'Heart',
-  title = 'No Saved Items!',
-  subtitle = "You don't have any saved items.",
-  description = 'Go to home and add some.',
+  icon = 'ShoppingCart',
+  title = 'Order Successful!',
+  subtitle = 'You have successfully made order.',
+  description = '',
   iconSize = 56,
   iconColor = colors.white,
+  checkout = true,
 }) => {
   const IconComponent = LucideIcons[icon];
   if (!IconComponent) {
@@ -18,15 +23,48 @@ const NothingPage = ({
     return null;
   }
 
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <IconComponent size={iconSize} color={iconColor} style={styles.icon} />
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>{subtitle}</Text>
-        <Text style={styles.subtitle}>{description}</Text>
-      </View>
-    </View>
+    <>
+      {checkout ? (
+        <ContainerLayout>
+          <View style={styles.container}>
+            <IconComponent
+              size={iconSize}
+              color={colors.hotPink}
+              style={styles.icon}
+            />
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.subtitle}>{subtitle}</Text>
+              <Text style={styles.subtitle}>{description}</Text>
+            </View>
+            <ButtonInput onPress={() => navigation.navigate('Home')}>
+              <LinearGradient
+                colors={[colors.hotPink, colors.purple]}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0}}
+                style={styles.placeOrderButton}>
+                <Text style={styles.placeOrderText}>Continue Shopping</Text>
+              </LinearGradient>
+            </ButtonInput>
+          </View>
+        </ContainerLayout>
+      ) : (
+        <View style={styles.container}>
+          <IconComponent
+            size={iconSize}
+            color={iconColor}
+            style={styles.icon}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.subtitle}>{subtitle}</Text>
+            <Text style={styles.subtitle}>{description}</Text>
+          </View>
+        </View>
+      )}
+    </>
   );
 };
 
@@ -48,14 +86,30 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.fredokaSemiBold,
     letterSpacing: 0.8,
-    fontSize: 18,
+    fontSize: 24,
     color: colors.black,
     marginBottom: 4,
   },
   subtitle: {
     fontFamily: fonts.fredokaRegular,
     color: colors.gray,
+    fontSize: 18,
+    letterSpacing: 0.8,
     textAlign: 'center',
     marginVertical: 2,
+  },
+  placeOrderButton: {
+    width: 320,
+    marginTop: 12,
+    marginHorizontal: 16,
+    padding: 18,
+    borderRadius: 30,
+    alignItems: 'center',
+  },
+  placeOrderText: {
+    color: colors.white,
+    fontFamily: fonts.fredokaSemiBold,
+    fontSize: 19,
+    letterSpacing: 0.8,
   },
 });
