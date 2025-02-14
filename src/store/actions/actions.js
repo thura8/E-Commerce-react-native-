@@ -40,3 +40,7 @@ export const updateQuantity = (productId, quantity) => ({
   type: 'UPDATE_QUANTITY',
   payload: {id: productId, quantity},
 });
+
+export const clearCart = () => ({
+  type: 'CLEAR_CART',
+});

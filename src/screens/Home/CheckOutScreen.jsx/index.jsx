@@ -19,8 +19,15 @@ import {
 } from '@store/selectors';
 import {connect} from 'react-redux';
 import ConfirmationModal from '@components/common/CofirmationModal';
+import {clearCart} from '@store/actions/actions';
 
-const CheckOutScreen = ({totalOriginalPrice, deliveryFee, discount, total}) => {
+const CheckOutScreen = ({
+  totalOriginalPrice,
+  deliveryFee,
+  discount,
+  total,
+  clearCart,
+}) => {
   const [selectedPayment, setSelectedPayment] = useState('visa');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +42,7 @@ const CheckOutScreen = ({totalOriginalPrice, deliveryFee, discount, total}) => {
 
     setTimeout(() => {
       setIsLoading(false);
+      clearCart();
       navigate('NothingPage');
     }, 3000);
   };
@@ -171,4 +179,8 @@ const mapStateToProps = state => ({
   totalOriginalPrice: selectTotalOriginalPrice(state),
 });
 
-export default connect(mapStateToProps)(CheckOutScreen);
+const mapDispatchToProps = {
+  clearCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckOutScreen);
