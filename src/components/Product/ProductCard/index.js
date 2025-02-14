@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
 import {useNavigation} from '@react-navigation/native';
@@ -25,8 +25,7 @@ const ProductCard = ({product}) => {
   }
 
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate('ProductDetails', product)}>
+    <ButtonInput onPress={() => navigation.navigate('ProductDetails', product)}>
       <View style={styles.container}>
         <View style={styles.imgContainer}>
           <FastImage
@@ -61,7 +60,7 @@ const ProductCard = ({product}) => {
           onPress={handleAddToCart}
         />
       </View>
-    </TouchableOpacity>
+    </ButtonInput>
   );
 };
 

@@ -1,13 +1,14 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import * as LucideIcons from 'lucide-react-native';
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
+import ButtonInput from '@components/common/ButtonInput';
 
 const AccountItems = ({icon, title, subtitle}) => {
   const IconComponent = LucideIcons[icon];
 
   return (
-    <TouchableOpacity style={styles.item}>
+    <ButtonInput btnCtnStyle={styles.item}>
       <View style={styles.itemLeft}>
         <View style={styles.iconContainer}>
           {IconComponent && (
@@ -20,7 +21,7 @@ const AccountItems = ({icon, title, subtitle}) => {
         </View>
       </View>
       <LucideIcons.ChevronRight size={20} color={colors.black} />
-    </TouchableOpacity>
+    </ButtonInput>
   );
 };
 

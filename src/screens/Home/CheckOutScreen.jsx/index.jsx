@@ -1,4 +1,4 @@
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import ContainerLayout from '@components/common/ContainerLayout';
 import FastImage from 'react-native-fast-image';
@@ -21,9 +21,9 @@ const CheckOutScreen = () => {
 
         <View style={styles.paymentOptions}>
           {paymentOptions.map((option, index) => (
-            <TouchableOpacity
+            <ButtonInput
               key={index}
-              style={[
+              btnCtnStyle={[
                 styles.paymentOption,
                 selectedPayment === option.name && styles.selectedPayment,
               ]}
@@ -34,7 +34,7 @@ const CheckOutScreen = () => {
                   <View style={styles.radioInner} />
                 )}
               </View>
-            </TouchableOpacity>
+            </ButtonInput>
           ))}
         </View>
 

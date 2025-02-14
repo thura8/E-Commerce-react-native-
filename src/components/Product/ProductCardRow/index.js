@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {formattedMoney} from '@helper/index';
 import {colors} from '@constants/colors';
@@ -21,7 +21,7 @@ const ProductCardRow = ({product, quantity, onQuantityChange, onRemove}) => {
     product?.price * (1 - product?.discountPercentage / 100);
 
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.9}>
+    <ButtonInput btnCtnStyle={styles.container} activeOpacity={0.9}>
       <View style={styles.imageContainer}>
         <FastImage
           source={{uri: product?.thumbnail || product?.images?.[0]}}
@@ -105,7 +105,7 @@ const ProductCardRow = ({product, quantity, onQuantityChange, onRemove}) => {
           {isInStock ? 'In Stock' : 'Out of Stock'}
         </Text>
       </View>
-    </TouchableOpacity>
+    </ButtonInput>
   );
 };
 

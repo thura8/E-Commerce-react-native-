@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Button, FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import * as LucideIcons from 'lucide-react-native';
 import FastImage from 'react-native-fast-image';
@@ -36,8 +36,8 @@ const CategoryList = ({category, layout = 'horizontal', onPress}) => {
     const IconComponent =
       icon && typeof icon === 'string' ? LucideIcons[icon] : null;
     return (
-      <TouchableOpacity
-        style={styles.verticalItem}
+      <ButtonInput
+        btnCtnStyle={styles.verticalItem}
         onPress={() => onPress?.(item)}>
         <View style={styles.textContainer}>
           <Text style={styles.categoryTitle}>{item.name}</Text>
@@ -51,7 +51,7 @@ const CategoryList = ({category, layout = 'horizontal', onPress}) => {
             />
           )}
         </View>
-      </TouchableOpacity>
+      </ButtonInput>
     );
   };
 

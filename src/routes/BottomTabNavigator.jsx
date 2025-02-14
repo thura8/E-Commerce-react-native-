@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import {Animated, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Animated, View, Text, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import fonts from '@assets/fonts';
@@ -7,6 +7,7 @@ import {colors} from '@constants/colors';
 import {dashBoardNavigations} from './routes';
 import {bottomTabs} from '@constants/common';
 import {useSelector} from 'react-redux';
+import ButtonInput from '@components/common/ButtonInput';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@ const TabButton = ({routeName, isFocused, icon: Icon, onPress}) => {
   const cartItemCount = useSelector(state => state.cart.cartItems.length);
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+    <ButtonInput onPress={onPress} activeOpacity={0.8}>
       <Animated.View
         style={[
           styles.tabButton,
@@ -39,7 +40,7 @@ const TabButton = ({routeName, isFocused, icon: Icon, onPress}) => {
         )}
         {isFocused && <Text style={styles.tabLabel}>{routeName}</Text>}
       </Animated.View>
-    </TouchableOpacity>
+    </ButtonInput>
   );
 };
 
