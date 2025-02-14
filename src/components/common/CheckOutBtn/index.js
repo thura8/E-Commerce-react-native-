@@ -60,7 +60,7 @@ const CheckOutBtn = ({
     <Animated.View
       style={[
         styles.checkoutContainer,
-        {transform: [{translateY: containerTransform}]},
+        {transform: [{translateY: containerTransform}], zIndex: 10},
       ]}>
       <ButtonInput
         btnCtnStyle={styles.arrowButton}

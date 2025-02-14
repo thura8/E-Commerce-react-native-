@@ -18,11 +18,19 @@ import {
   selectTotalOriginalPrice,
 } from '@store/selectors';
 import {connect} from 'react-redux';
+import ConfirmationModal from '@components/common/CofirmationModal';
 
-const CheckOutScreen = ({subtotal, deliveryFee, discount, total}) => {
+const CheckOutScreen = ({totalOriginalPrice, deliveryFee, discount, total}) => {
   const [selectedPayment, setSelectedPayment] = useState('visa');
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const {navigate} = useNavigation();
 
+  const handlePlaceOrder = () => setIsModalVisible(true);
+  const handleCancel = () => setIsModalVisible(false);
+  const handleConfirmOrder = () => {
+    setIsModalVisible(false);
+    navigate('NothingPage');
+  };
   return (
     <ContainerLayout header headerTitle="Checkout">
       <View style={styles.section}>
@@ -93,7 +101,9 @@ const CheckOutScreen = ({subtotal, deliveryFee, discount, total}) => {
         <View style={styles.summary}>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Subtotal</Text>
-            <Text style={styles.summaryValue}>{formattedMoney(subtotal)}</Text>
+            <Text style={styles.summaryValue}>
+              {formattedMoney(totalOriginalPrice)}
+            </Text>
           </View>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Delivery Fee</Text>
@@ -110,7 +120,7 @@ const CheckOutScreen = ({subtotal, deliveryFee, discount, total}) => {
             <Text style={styles.totalValue}>{formattedMoney(total)}</Text>
           </View>
 
-          <ButtonInput onPress={() => navigate('NothingPage')}>
+          <ButtonInput onPress={handlePlaceOrder}>
             <LinearGradient
               colors={[colors.hotPink, colors.lightPink]}
               start={{x: 0, y: 0}}
@@ -121,6 +131,16 @@ const CheckOutScreen = ({subtotal, deliveryFee, discount, total}) => {
           </ButtonInput>
         </View>
       </View>
+
+      {isModalVisible && (
+        <ConfirmationModal
+          message={'Confirm your purchase to proceed.'}
+          confirmText="Place Order"
+          cancelText="Cancel"
+          onCancel={handleCancel}
+          onConfirm={handleConfirmOrder}
+        />
+      )}
     </ContainerLayout>
   );
 };
