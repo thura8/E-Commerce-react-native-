@@ -13,6 +13,7 @@ const ConfirmationModal = ({
   message,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
+  checkout = false,
 }) => {
   return (
     <Modal
@@ -32,7 +33,10 @@ const ConfirmationModal = ({
               btnTxtStyle={styles.cancelText}
             />
             <ButtonInput
-              btnCtnStyle={styles.confirmButton}
+              btnCtnStyle={[
+                styles.confirmButton,
+                {backgroundColor: checkout ? colors.hotPink : colors.red},
+              ]}
               onPress={onConfirm}
               btnTxt={confirmText}
               btnTxtStyle={styles.confirmText}
@@ -90,7 +94,7 @@ const styles = StyleSheet.create({
   confirmButton: {
     flex: 1,
     marginLeft: 10,
-    backgroundColor: colors.red,
+
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',

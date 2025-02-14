@@ -17,54 +17,55 @@ const NothingPage = ({
   iconColor = colors.white,
   checkout = true,
 }) => {
+  const navigation = useNavigation();
+  return (
+    <ContainerLayout>
+      <View style={styles.container}>
+        <NothingPageContent
+          icon={icon}
+          title={title}
+          subtitle={subtitle}
+          description={description}
+          iconSize={iconSize}
+          iconColor={checkout ? colors.hotPink : iconColor}
+        />
+        {checkout && (
+          <ButtonInput onPress={() => navigation.navigate('Home')}>
+            <LinearGradient
+              colors={[colors.hotPink, colors.purple]}
+              start={{x: 0, y: 0}}
+              end={{x: 1, y: 0}}
+              style={styles.placeOrderButton}>
+              <Text style={styles.placeOrderText}>Continue Shopping</Text>
+            </LinearGradient>
+          </ButtonInput>
+        )}
+      </View>
+    </ContainerLayout>
+  );
+};
+
+const NothingPageContent = ({
+  icon,
+  title,
+  subtitle,
+  description,
+  iconSize,
+  iconColor,
+}) => {
   const IconComponent = LucideIcons[icon];
   if (!IconComponent) {
     console.warn(`Icon "${icon}" not found in lucide-react-native.`);
     return null;
   }
 
-  const navigation = useNavigation();
   return (
-    <>
-      {checkout ? (
-        <ContainerLayout>
-          <View style={styles.container}>
-            <IconComponent
-              size={iconSize}
-              color={colors.hotPink}
-              style={styles.icon}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.title}>{title}</Text>
-              <Text style={styles.subtitle}>{subtitle}</Text>
-              <Text style={styles.subtitle}>{description}</Text>
-            </View>
-            <ButtonInput onPress={() => navigation.navigate('Home')}>
-              <LinearGradient
-                colors={[colors.hotPink, colors.purple]}
-                start={{x: 0, y: 0}}
-                end={{x: 1, y: 0}}
-                style={styles.placeOrderButton}>
-                <Text style={styles.placeOrderText}>Continue Shopping</Text>
-              </LinearGradient>
-            </ButtonInput>
-          </View>
-        </ContainerLayout>
-      ) : (
-        <View style={styles.container}>
-          <IconComponent
-            size={iconSize}
-            color={iconColor}
-            style={styles.icon}
-          />
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.subtitle}>{subtitle}</Text>
-            <Text style={styles.subtitle}>{description}</Text>
-          </View>
-        </View>
-      )}
-    </>
+    <View style={styles.textContainer}>
+      <IconComponent size={iconSize} color={iconColor} style={styles.icon} />
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.subtitle}>{subtitle}</Text>
+      {description ? <Text style={styles.subtitle}>{description}</Text> : null}
+    </View>
   );
 };
 

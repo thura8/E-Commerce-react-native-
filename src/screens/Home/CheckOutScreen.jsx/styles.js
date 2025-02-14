@@ -152,4 +152,22 @@ export const styles = StyleSheet.create({
     fontSize: 19,
     letterSpacing: 0.8,
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  loadingContent: {
+    backgroundColor: colors.white,
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    fontFamily: fonts.fredokaSemiBold,
+    color: colors.black,
+  },
 });

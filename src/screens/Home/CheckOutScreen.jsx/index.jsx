@@ -1,4 +1,4 @@
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, View, ActivityIndicator, Modal} from 'react-native';
 import React, {useState} from 'react';
 import ContainerLayout from '@components/common/ContainerLayout';
 import FastImage from 'react-native-fast-image';
@@ -23,13 +23,20 @@ import ConfirmationModal from '@components/common/CofirmationModal';
 const CheckOutScreen = ({totalOriginalPrice, deliveryFee, discount, total}) => {
   const [selectedPayment, setSelectedPayment] = useState('visa');
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {navigate} = useNavigation();
 
   const handlePlaceOrder = () => setIsModalVisible(true);
   const handleCancel = () => setIsModalVisible(false);
+
   const handleConfirmOrder = () => {
     setIsModalVisible(false);
-    navigate('NothingPage');
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('NothingPage');
+    }, 3000);
   };
   return (
     <ContainerLayout header headerTitle="Checkout">
@@ -120,7 +127,7 @@ const CheckOutScreen = ({totalOriginalPrice, deliveryFee, discount, total}) => {
             <Text style={styles.totalValue}>{formattedMoney(total)}</Text>
           </View>
 
-          <ButtonInput onPress={handlePlaceOrder}>
+          <ButtonInput onPress={handlePlaceOrder} disabled={isLoading}>
             <LinearGradient
               colors={[colors.hotPink, colors.lightPink]}
               start={{x: 0, y: 0}}
@@ -134,16 +141,28 @@ const CheckOutScreen = ({totalOriginalPrice, deliveryFee, discount, total}) => {
 
       {isModalVisible && (
         <ConfirmationModal
+          title={'Order Confirm'}
           message={'Confirm your purchase to proceed.'}
           confirmText="Place Order"
           cancelText="Cancel"
           onCancel={handleCancel}
           onConfirm={handleConfirmOrder}
+          checkout
         />
       )}
+
+      <Modal visible={isLoading} transparent={true} animationType="fade">
+        <View style={styles.loadingContainer}>
+          <View style={styles.loadingContent}>
+            <ActivityIndicator size="large" color={colors.hotPink} />
+            <Text style={styles.loadingText}>Processing your order...</Text>
+          </View>
+        </View>
+      </Modal>
     </ContainerLayout>
   );
 };
+
 const mapStateToProps = state => ({
   subtotal: selectSubtotal(state),
   deliveryFee: selectDeliveryFee(state),
