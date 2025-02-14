@@ -27,6 +27,8 @@ const CheckOutBtn = ({
   const animatedValue = useRef(new Animated.Value(0)).current;
   const arrowRotation = useRef(new Animated.Value(0)).current;
 
+  const isCheckoutDisabled = total <= 20;
+
   const navigation = useNavigation();
 
   const toggleContainer = () => {
@@ -95,14 +97,28 @@ const CheckOutBtn = ({
 
       <ButtonInput
         activeOpacity={0.9}
-        btnCtnStyle={styles.checkoutButton}
-        onPress={() => navigation.navigate('CheckOut')}>
+        btnCtnStyle={[
+          styles.checkoutButton,
+          isCheckoutDisabled && styles.disabledButton,
+        ]}
+        onPress={() => {
+          if (!isCheckoutDisabled) {
+            navigation.navigate('CheckOut');
+          }
+        }}
+        disabled={isCheckoutDisabled}>
         <LinearGradient
-          colors={[colors.hotPink, colors.lightPink]}
+          colors={
+            isCheckoutDisabled
+              ? [colors.black, colors.gray]
+              : [colors.hotPink, colors.lightPink]
+          }
           style={styles.gradientBackground}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}>
-          <Text style={styles.buttonText}>Proceed to Checkout</Text>
+          <Text style={styles.buttonText}>
+            {isCheckoutDisabled ? 'Buy something first' : 'Proceed to Checkout'}
+          </Text>
         </LinearGradient>
       </ButtonInput>
     </Animated.View>
@@ -193,6 +209,9 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     overflow: 'hidden',
     marginHorizontal: 16,
+  },
+  disabledButton: {
+    opacity: 0.6,
   },
   gradientBackground: {
     paddingVertical: 18,
