@@ -15,7 +15,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addToCart, addToFavorites} from '@store/actions/actions';
 
 const ProductDetailsScreen = ({route}) => {
-  const product = route.params;
+  const {product} = route.params;
   const navigation = useNavigation();
   const goBack = useCallback(() => {
     navigation.goBack();

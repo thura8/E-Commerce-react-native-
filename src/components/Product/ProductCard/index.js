@@ -25,7 +25,8 @@ const ProductCard = ({product}) => {
   }
 
   return (
-    <ButtonInput onPress={() => navigation.navigate('ProductDetails', product)}>
+    <ButtonInput
+      onPress={() => navigation.navigate('ProductDetails', {product})}>
       <View style={styles.container}>
         <View style={styles.imgContainer}>
           <FastImage

@@ -226,10 +226,6 @@ const styles = StyleSheet.create({
     padding: 6,
     backgroundColor: colors.white,
     borderRadius: 6,
-    shadowColor: colors.black,
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    elevation: 2,
   },
   quantityText: {
     fontFamily: fonts.interSemiBold,
