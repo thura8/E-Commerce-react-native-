@@ -5,6 +5,7 @@ import {formattedMoney} from '@helper/index';
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import ButtonInput from '@components/common/ButtonInput';
+import {useNavigation} from '@react-navigation/native';
 
 const ProductCardRow = ({
   product,
@@ -26,8 +27,13 @@ const ProductCardRow = ({
   const discountedPrice =
     product?.price * (1 - product?.discountPercentage / 100);
 
+  const navigation = useNavigation();
+
   return (
-    <ButtonInput btnCtnStyle={styles.container} activeOpacity={0.9}>
+    <ButtonInput
+      btnCtnStyle={styles.container}
+      activeOpacity={0.9}
+      onPress={() => navigation.navigate('ProductDetails', {product})}>
       <View style={styles.imageContainer}>
         <FastImage
           source={{uri: product?.thumbnail || product?.images?.[0]}}
