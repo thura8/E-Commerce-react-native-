@@ -13,9 +13,11 @@ const ShopDeals = () => {
   return (
     <View style={styles.productContainer}>
       <Text style={styles.title}>Shop Deals</Text>
-      {products?.map((item, index) => (
-        <ProductCard key={index} product={item} />
-      ))}
+      <View style={styles.container}>
+        {products?.map((item, index) => (
+          <ProductCard key={index} product={item} />
+        ))}
+      </View>
     </View>
   );
 };
@@ -23,6 +25,14 @@ const ShopDeals = () => {
 export default ShopDeals;
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    rowGap: 16,
+    marginBottom: 14,
+  },
   productContainer: {
     marginTop: 16,
   },
