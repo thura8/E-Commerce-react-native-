@@ -69,7 +69,7 @@ const ProductDetailsScreen = ({route}) => {
           icon="ChevronLeft"
           btnCtnStyle={styles.backButton}
           iconColor={colors.black}
-          iconSize={25}
+          iconSize={24}
           onPress={goBack}
         />
         <Text style={styles.headerTitle} numberOfLines={1}>
