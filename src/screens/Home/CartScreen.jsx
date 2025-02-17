@@ -41,6 +41,7 @@ const CartScreen = () => {
               quantity={item.quantity}
               onQuantityChange={handleQuantityChange}
               onRemove={handleRemove}
+              isCart
             />
           ))}
         </>

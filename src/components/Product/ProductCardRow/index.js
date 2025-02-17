@@ -6,7 +6,13 @@ import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import ButtonInput from '@components/common/ButtonInput';
 
-const ProductCardRow = ({product, quantity, onQuantityChange, onRemove}) => {
+const ProductCardRow = ({
+  product,
+  quantity,
+  onQuantityChange,
+  onRemove,
+  isCart = false,
+}) => {
   const handleIncrement = () => onQuantityChange(product.id, quantity + 1);
   const handleDecrement = () => {
     if (quantity > 1) {
@@ -44,7 +50,7 @@ const ProductCardRow = ({product, quantity, onQuantityChange, onRemove}) => {
             {product?.title}
           </Text>
           <ButtonInput
-            icon="CircleX"
+            icon={isCart ? 'CircleX' : 'Trash2'}
             iconColor="black"
             iconSize={24}
             onPress={() => onRemove(product.id)}
@@ -74,31 +80,33 @@ const ProductCardRow = ({product, quantity, onQuantityChange, onRemove}) => {
             </Text>
           </View>
 
-          <View style={styles.quantityWrapper}>
-            <ButtonInput
-              icon="CircleMinus"
-              btnCtnStyle={[
-                styles.quantityButton,
-                !isInStock && styles.disabledButton,
-              ]}
-              iconColor="black"
-              iconSize={24}
-              onPress={handleDecrement}
-              disabled={!isInStock}
-            />
-            <Text style={styles.quantityText}>{quantity}</Text>
-            <ButtonInput
-              icon="CirclePlus"
-              btnCtnStyle={[
-                styles.quantityButton,
-                !isInStock && styles.disabledButton,
-              ]}
-              iconColor="black"
-              iconSize={24}
-              onPress={handleIncrement}
-              disabled={!isInStock}
-            />
-          </View>
+          {isCart && (
+            <View style={styles.quantityWrapper}>
+              <ButtonInput
+                icon="CircleMinus"
+                btnCtnStyle={[
+                  styles.quantityButton,
+                  !isInStock && styles.disabledButton,
+                ]}
+                iconColor="black"
+                iconSize={24}
+                onPress={handleDecrement}
+                disabled={!isInStock}
+              />
+              <Text style={styles.quantityText}>{quantity}</Text>
+              <ButtonInput
+                icon="CirclePlus"
+                btnCtnStyle={[
+                  styles.quantityButton,
+                  !isInStock && styles.disabledButton,
+                ]}
+                iconColor="black"
+                iconSize={24}
+                onPress={handleIncrement}
+                disabled={!isInStock}
+              />
+            </View>
+          )}
         </View>
 
         <Text style={[styles.stockText, !isInStock && styles.outOfStockText]}>
