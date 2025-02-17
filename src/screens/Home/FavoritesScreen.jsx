@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
-
+import React from 'react';
+import {useSelector} from 'react-redux';
 import ContainerLayout from '@components/common/ContainerLayout';
 import NothingPage from '@components/common/NothingPage';
 import FavItems from '@components/Home/FavItems';
 
 const FavoritesScreen = () => {
-  const [isSaved, setIsSaved] = useState(false);
+  const favorites = useSelector(state => state.favorites.favorites || []);
+  const hasFavItems = favorites.length > 0;
 
   return (
-    <ContainerLayout header headerTitle="Your Picks" noScroll={!isSaved}>
-      {isSaved ? (
-        <FavItems />
+    <ContainerLayout header headerTitle="Your Picks" noScroll={!hasFavItems}>
+      {hasFavItems ? (
+        <FavItems favorites={favorites} />
       ) : (
         <NothingPage
           checkout={false}

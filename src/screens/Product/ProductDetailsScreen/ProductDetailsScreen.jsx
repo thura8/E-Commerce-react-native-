@@ -33,7 +33,7 @@ const ProductDetailsScreen = ({route}) => {
   const handleAddToFav = () => {
     if (!isFavorites) {
       dispatch(addToFavorites(product));
-      navigation.navigate('Favorites');
+      console.log('Product added to favorites!');
     } else {
       console.log('That product is already in the favorites😏');
     }
