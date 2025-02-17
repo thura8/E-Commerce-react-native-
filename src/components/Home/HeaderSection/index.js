@@ -21,9 +21,6 @@ const DashboardHeader = () => {
         <ButtonInput onPress={() => navigation.navigate('Favorites')}>
           <Heart color={colors.white} strokeWidth={3} />
         </ButtonInput>
-        <ButtonInput>
-          <Bell color={colors.white} strokeWidth={3} />
-        </ButtonInput>
       </View>
     </View>
   );

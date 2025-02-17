@@ -125,11 +125,6 @@ export const accountGeneral = [
 // Account Setting
 export const accountSetting = [
   {
-    icon: 'Bell',
-    title: 'Notifications',
-    subtitle: 'Manage your notifications',
-  },
-  {
     icon: 'Globe',
     title: 'Language',
     subtitle: '',
