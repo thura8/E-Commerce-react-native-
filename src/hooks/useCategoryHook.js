@@ -8,8 +8,10 @@ const useCategoryHook = (endpoint, params = {}) => {
 
   useEffect(_ => {
     useGetCategories(endpoint, params)
-      .then(resp => {
-        setProducts(resp.respObj);
+      .then(result => {
+        if (result.isSuccess) {
+          setProducts(result.respObj);
+        }
       })
       .catch(err => {
         setError(err.error);

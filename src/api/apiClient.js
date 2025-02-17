@@ -10,5 +10,6 @@ export const sourceToken = axios.CancelToken.source();
 
 //Endpoints
 export const categoryListEndpoint = '/products/categories';
+export const allProductsEndpoint = '/products';
 
 export default apiClient;

@@ -1,39 +1,35 @@
 import apiClient, {sourceToken} from '@api/apiClient';
 
-export const useGetCategories = (endpoint, params) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const response = await apiClient.get(endpoint, {
-        params,
-        cancelToken: sourceToken.token,
-      });
-      if (response?.status == '200') {
-        if (
-          response.data?.products &&
-          Array.isArray(response.data.products) &&
-          response.data.products.length > 0
-        ) {
-          resolve({
-            isSuccess: true,
-            respObj: response.data.products,
-          });
-        } else {
-          resolve({
-            isSuccess: false,
-            respObj: null,
-            respMsg: 'Data is empty!',
-          });
-        }
+export const useGetCategories = async (endpoint, params) => {
+  try {
+    const response = await apiClient.get(endpoint, {
+      params,
+      cancelToken: sourceToken.token,
+    });
+
+    if (response?.status === 200) {
+      if (
+        Array.isArray(response.data?.products) &&
+        response.data.products.length > 0
+      ) {
+        return {
+          isSuccess: true,
+          respObj: response.data.products,
+        };
       } else {
-        resolve({
+        return {
           isSuccess: false,
-          respMsg: 'Something went wrong!',
-        });
+          respObj: null,
+          respMsg: 'Data is empty!',
+        };
       }
-    } catch (error) {
-      reject({
-        error,
-      });
+    } else {
+      return {
+        isSuccess: false,
+        respMsg: 'Something went wrong!',
+      };
     }
-  });
+  } catch (error) {
+    throw {error};
+  }
 };
