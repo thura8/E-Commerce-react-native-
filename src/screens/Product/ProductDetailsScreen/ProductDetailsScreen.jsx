@@ -1,4 +1,4 @@
-import {useState, useRef, useCallback} from 'react';
+import {useRef, useCallback} from 'react';
 import {Text, View, ScrollView, Animated} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
@@ -11,8 +11,8 @@ import ProductImageCarousel from '@components/Product/ProductCarousel';
 import {formattedMoney} from '@helper/index';
 import {colors} from '@constants/colors';
 import {styles} from './styles';
-import {useDispatch} from 'react-redux';
-import {addToCart} from '@store/actions/actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart, addToFavorites} from '@store/actions/actions';
 
 const ProductDetailsScreen = ({route}) => {
   const product = route.params;
@@ -24,6 +24,20 @@ const ProductDetailsScreen = ({route}) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
   const dispatch = useDispatch();
+
+  //Favorites
+  const favorites = useSelector(state => state.favorites.favorites);
+
+  const isFavorites = favorites.some(item => item.id === product.id);
+
+  const handleAddToFav = () => {
+    if (!isFavorites) {
+      dispatch(addToFavorites(product));
+      navigation.navigate('Favorites');
+    } else {
+      console.log('That product is already in the favorites😏');
+    }
+  };
 
   const headerOpacity = scrollY.interpolate({
     inputRange: [0, 100],
@@ -197,9 +211,7 @@ const ProductDetailsScreen = ({route}) => {
               icon="Heart"
               iconColor={colors.white}
               iconSize={24}
-              onPress={() => {
-                console.log('Wishlist button pressed');
-              }}
+              onPress={handleAddToFav}
             />
           </Animated.View>
         </View>

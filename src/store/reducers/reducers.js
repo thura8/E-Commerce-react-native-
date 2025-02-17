@@ -94,7 +94,35 @@ export const cartReducer = (
   }
 };
 
+//Favorites
+
+export const favoritesReducer = (state = {favorites: []}, action) => {
+  switch (action.type) {
+    case 'ADD_TO_FAVORITES':
+      const isAlreadyFavorites = state.favorites.some(
+        item => item.id === action.payload.id,
+      );
+      if (!isAlreadyFavorites) {
+        return {
+          ...state,
+          favorites: [...state.favorites, action.payload],
+        };
+      }
+      return state;
+
+    case 'REMOVE_FROM_FAVORITES':
+      return {
+        ...state,
+        favorites: state.favorites.filter(item => item.id !== action.payload),
+      };
+
+    default:
+      return state;
+  }
+};
+
 export const rootReducer = combineReducers({
   categories: createApiReducer('CATEGORIES'),
   cart: cartReducer,
+  favorites: favoritesReducer,
 });
