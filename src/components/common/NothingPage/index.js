@@ -3,7 +3,7 @@ import React from 'react';
 import * as LucideIcons from 'lucide-react-native';
 import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
-import ContainerLayout from '../ContainerLayout';
+
 import ButtonInput from '../ButtonInput';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
@@ -19,29 +19,27 @@ const NothingPage = ({
 }) => {
   const navigation = useNavigation();
   return (
-    <ContainerLayout>
-      <View style={styles.container}>
-        <NothingPageContent
-          icon={icon}
-          title={title}
-          subtitle={subtitle}
-          description={description}
-          iconSize={iconSize}
-          iconColor={checkout ? colors.hotPink : iconColor}
-        />
-        {checkout && (
-          <ButtonInput onPress={() => navigation.navigate('Home')}>
-            <LinearGradient
-              colors={[colors.hotPink, colors.purple]}
-              start={{x: 0, y: 0}}
-              end={{x: 1, y: 0}}
-              style={styles.placeOrderButton}>
-              <Text style={styles.placeOrderText}>Continue Shopping</Text>
-            </LinearGradient>
-          </ButtonInput>
-        )}
-      </View>
-    </ContainerLayout>
+    <View style={styles.container}>
+      <NothingPageContent
+        icon={icon}
+        title={title}
+        subtitle={subtitle}
+        description={description}
+        iconSize={iconSize}
+        iconColor={checkout ? colors.hotPink : iconColor}
+      />
+      {checkout && (
+        <ButtonInput onPress={() => navigation.navigate('Home')}>
+          <LinearGradient
+            colors={[colors.hotPink, colors.purple]}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            style={styles.placeOrderButton}>
+            <Text style={styles.placeOrderText}>Continue Shopping</Text>
+          </LinearGradient>
+        </ButtonInput>
+      )}
+    </View>
   );
 };
 
