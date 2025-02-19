@@ -11,9 +11,6 @@ export const sourceToken = axios.CancelToken.source();
 //Endpoints
 export const categoryListEndpoint = '/products/categories';
 export const allProductsEndpoint = '/products';
-
-//Dynamic Endpoints
-export const searchProductsEndpoint = query =>
-  `/products/search?q=${encodeURIComponent(query)}`;
+export const searchProductsEndpoint = '/products/search';
 
 export default apiClient;
