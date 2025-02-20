@@ -113,6 +113,7 @@ export const accountGeneral = [
   {
     icon: 'CreditCard',
     title: 'Payment Method',
+    component: 'PaymentMethod',
     subtitle: 'Add your credit or debit card',
   },
   {

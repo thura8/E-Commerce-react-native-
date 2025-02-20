@@ -11,6 +11,7 @@ import CheckOutScreen from '@screens/Home/CheckOutScreen.jsx';
 import NothingPage from '@components/common/NothingPage';
 import PrivacySettings from '@components/Accounts/Privacy';
 import ContactUs from '@components/Accounts/ContactUs';
+import PaymentMethods from '@components/Accounts/PaymentMethod';
 
 //Auth imports
 import LoginScreen from '@screens/Auth/LoginScreen';
@@ -75,5 +76,9 @@ export const dashBoardNavigations = [
   {
     name: 'ContactUs',
     component: ContactUs,
+  },
+  {
+    name: 'PaymentMethod',
+    component: PaymentMethods,
   },
 ];
