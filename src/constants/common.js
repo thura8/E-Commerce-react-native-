@@ -132,6 +132,7 @@ export const accountSetting = [
   {
     icon: 'Info',
     title: 'Privacy & Policy',
+    component: 'Privacy',
     subtitle: '',
   },
   {

@@ -3,12 +3,17 @@ import * as LucideIcons from 'lucide-react-native';
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import ButtonInput from '@components/common/ButtonInput';
+import {useNavigation} from '@react-navigation/native';
 
-const AccountItems = ({icon, title, subtitle}) => {
+const AccountItems = ({icon, title, subtitle, component}) => {
   const IconComponent = LucideIcons[icon];
 
+  const navigation = useNavigation();
+
   return (
-    <ButtonInput btnCtnStyle={styles.item}>
+    <ButtonInput
+      btnCtnStyle={styles.item}
+      onPress={() => navigation.navigate(component)}>
       <View style={styles.itemLeft}>
         <View style={styles.iconContainer}>
           {IconComponent && (

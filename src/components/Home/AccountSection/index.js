@@ -13,6 +13,7 @@ const AccountSection = ({title, data}) => {
           key={index}
           icon={item.icon}
           title={item.title}
+          component={item.component}
           subtitle={item.subtitle}
         />
       ))}
