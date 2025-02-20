@@ -10,6 +10,7 @@ import CategoryProductsScreen from '@screens/Home/CategoryProductsScreen';
 import CheckOutScreen from '@screens/Home/CheckOutScreen.jsx';
 import NothingPage from '@components/common/NothingPage';
 import PrivacySettings from '@components/Accounts/Privacy';
+import ContactUs from '@components/Accounts/ContactUs';
 
 //Auth imports
 import LoginScreen from '@screens/Auth/LoginScreen';
@@ -70,5 +71,9 @@ export const dashBoardNavigations = [
   {
     name: 'Privacy',
     component: PrivacySettings,
+  },
+  {
+    name: 'ContactUs',
+    component: ContactUs,
   },
 ];

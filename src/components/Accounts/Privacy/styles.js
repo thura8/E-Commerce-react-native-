@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   title: {
+    color: colors.black,
     fontSize: 24,
     fontFamily: fonts.fredokaSemiBold,
     marginLeft: 8,
@@ -27,6 +28,7 @@ export const styles = StyleSheet.create({
     marginBottom: 12,
   },
   sectionTitle: {
+    color: colors.black,
     fontSize: 18,
     fontFamily: fonts.fredokaSemiBold,
     marginLeft: 8,

@@ -138,6 +138,7 @@ export const accountSetting = [
   {
     icon: 'Phone',
     title: 'Contact us',
+    component: 'ContactUs',
     subtitle: '',
   },
 ];
