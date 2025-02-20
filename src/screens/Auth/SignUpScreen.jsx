@@ -16,9 +16,9 @@ const SignUpScreen = () => {
     <ContainerLayout noScroll={true}>
       <Text
         style={{
-          fontFamily: fonts.fredokaLight,
-          fontSize: 30,
-          color: colors.black,
+          fontFamily: fonts.fredokaSemiBold,
+          fontSize: 36,
+          color: colors.white,
           marginTop: 8,
         }}>
         Create Your Account

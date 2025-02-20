@@ -31,20 +31,17 @@ export default AuthButtons;
 const styles = StyleSheet.create({
   container: {
     height: 56,
-    borderWidth: 1,
-    borderColor: colors.gray,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 24,
     paddingVertical: 4,
     marginBottom: 28,
-    backgroundColor: colors.bgWhite,
+    backgroundColor: colors.whitePink,
   },
   text: {
-    color: colors.gray,
-    fontFamily: fonts.fredokaLight,
+    color: colors.darkGray,
+    fontFamily: fonts.fredokaRegular,
     fontSize: 18,
-    fontWeight: 'bold',
   },
 });

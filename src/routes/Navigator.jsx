@@ -43,7 +43,7 @@ const MainNavigator = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <MainStack.Navigator
-        initialRouteName="MainTabs"
+        initialRouteName="AuthStack"
         screenOptions={{
           headerShown: false,
           gestureEnabled: false,

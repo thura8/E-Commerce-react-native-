@@ -32,10 +32,9 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: fonts.fredokaLight,
+    fontFamily: fonts.fredokaSemiBold,
     fontSize: 36,
-    fontWeight: 'bold',
-    color: colors.black,
+    color: colors.white,
     marginTop: 20,
   },
 });

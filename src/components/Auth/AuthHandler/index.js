@@ -65,20 +65,21 @@ const AuthHandler = ({isSignUp = false}) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}
-            icon={
-              checked
-                ? require('@assets/icons/AuthIcons/checked.png')
-                : require('@assets/icons/AuthIcons/unchecked.png')
-            }
+            icon={checked ? 'SquareCheckBig' : 'Square'}
+            iconColor={colors.black}
+            iconSize={28}
             imgStyle={{width: 28, height: 28, marginRight: 4}}
             btnTxt={
               <>
-                <Text style={{color: colors.gray}}>I accepted </Text>
-                <Text style={{color: colors.black}}>
+                <Text style={{color: colors.darkGray, fontSize: 15}}>
+                  I accepted{' '}
+                </Text>
+                <Text style={{color: colors.purple, fontSize: 15}}>
                   Terms & Privacy Policy
                 </Text>
               </>
             }
+            btnTxtStyle={{marginLeft: 8}}
           />
         </View>
       ) : (
@@ -90,9 +91,9 @@ const AuthHandler = ({isSignUp = false}) => {
           }}
           btnTxt={'Forget Password?'}
           btnTxtStyle={{
-            fontFamily: fonts.fredokaLight,
-            color: colors.black,
-            fontWeight: 'bold',
+            fontFamily: fonts.fredokaSemiBold,
+            color: colors.purple,
+            fontSize: 15,
           }}
         />
       )}
@@ -104,13 +105,14 @@ const AuthHandler = ({isSignUp = false}) => {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: colors.black,
+          backgroundColor: colors.purple,
           borderRadius: 16,
           marginTop: isSignUp ? 28 : 0,
         }}
         btnTxtStyle={{
-          fontFamily: fonts.fredokaLight,
-          color: colors.bgWhite,
+          fontFamily: fonts.fredokaSemiBold,
+          letterSpacing: 0.8,
+          color: colors.white,
           fontSize: 20,
         }}
         btnTxt={isSignUp ? 'Sign Up' : 'Sign In'}
@@ -124,13 +126,13 @@ export default AuthHandler;
 
 const styles = StyleSheet.create({
   signInText: {
-    fontFamily: fonts.fredokaLight,
+    fontFamily: fonts.fredokaSemiBold,
     fontSize: 36,
-    fontWeight: 'bold',
-    color: colors.black,
+    color: colors.hotPink,
   },
   signUpText: {
-    fontFamily: fonts.fredokaLight,
-    color: colors.gray,
+    fontFamily: fonts.fredokaSemiBold,
+    color: colors.hotPink,
+    fontSize: 17,
   },
 });

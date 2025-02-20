@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: colors.gray,
+    color: colors.darkGray,
   },
 });

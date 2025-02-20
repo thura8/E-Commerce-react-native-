@@ -24,13 +24,11 @@ const InputBox = ({inputName, eye, value, onChanged}) => {
             top: 12,
             right: 12,
           }}
-          icon={
-            showPassword
-              ? require('@assets/icons/AuthIcons/eye-off.png')
-              : require('@assets/icons/AuthIcons/eye.png')
-          }
+          icon={showPassword ? 'EyeOff' : 'Eye'}
           onPress={() => setShowPassword(!showPassword)}
           imgStyle={{width: 28, height: 28}}
+          iconSize={28}
+          iconColor={colors.purple}
         />
       )}
     </View>
@@ -48,11 +46,10 @@ const styles = StyleSheet.create({
     width: 380,
     height: 53,
     borderRadius: 16,
-    borderWidth: 1,
-    borderColor: colors.lightGray,
+    backgroundColor: colors.whitePink,
     paddingLeft: 16,
     fontSize: 16,
-    fontFamily: fonts.fredokaLight,
+    fontFamily: fonts.fredokaRegular,
   },
   eye: {
     width: 28,
