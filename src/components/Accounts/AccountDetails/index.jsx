@@ -1,72 +1,71 @@
+import React, {useState} from 'react';
+import {Text, View, TextInput, Alert} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {updatedUser} from '@store/actions/actions';
+
+import ButtonInput from '@components/common/ButtonInput';
 import ContainerLayout from '@components/common/ContainerLayout';
-import {useState} from 'react';
-import {View, StyleSheet, Alert, TextInput, Button} from 'react-native';
+import {styles} from './styles';
 
-const AccountDetails = ({initialUsername, initialEmail}) => {
-  const [username, setUsername] = useState(initialUsername || '');
-  const [email, setEmail] = useState(initialEmail || '');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+const AccountDetails = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.user);
 
-  const handleUpdateAccount = async () => {
-    setLoading(true);
-    try {
-      Alert.alert('Success', 'Account details updated successfully!');
-    } catch (error) {
-      Alert.alert('Error', error.message);
-    } finally {
-      setLoading(false);
+  const [username, setUsername] = useState(user?.username || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = () => {
+    if (!username.trim() || !email.trim()) {
+      Alert.alert('Error', 'Please fill in all fields.');
+      return;
     }
+
+    const updatedUserData = {
+      ...user,
+      username,
+      email,
+    };
+
+    dispatch(updatedUser(updatedUserData));
+
+    setIsEditing(false);
+    Alert.alert('Success', 'Your details have been updated.');
   };
 
   return (
     <ContainerLayout header headerTitle="Account Details">
       <View style={styles.inputContainer}>
+        <Text style={styles.label}>Username</Text>
         <TextInput
-          label="Username"
+          style={styles.input}
           value={username}
           onChangeText={setUsername}
+          editable={isEditing}
           placeholder="Enter your username"
-          autoCapitalize="none"
         />
       </View>
+
       <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email</Text>
         <TextInput
-          label="Email"
+          style={styles.input}
           value={email}
           onChangeText={setEmail}
+          editable={isEditing}
           placeholder="Enter your email"
-          autoCapitalize="none"
           keyboardType="email-address"
         />
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          label="Password"
-          value={password}
-          onChangeText={setPassword}
-          placeholder="Enter your password"
-          secureTextEntry
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title={loading ? 'Updating...' : 'Update Account'}
-          onPress={handleUpdateAccount}
-          disabled={loading}
-        />
-      </View>
+
+      <ButtonInput
+        btnCtnStyle={styles.button}
+        btnTxtStyle={styles.buttonText}
+        btnTxt={isEditing ? 'Save Changes' : 'Edit Details'}
+        onPress={isEditing ? handleSave : () => setIsEditing(true)}
+      />
     </ContainerLayout>
   );
 };
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    marginBottom: 15,
-  },
-  buttonContainer: {
-    marginTop: 20,
-  },
-});
 
 export default AccountDetails;
