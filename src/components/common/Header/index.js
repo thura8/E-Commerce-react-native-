@@ -1,24 +1,28 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import ButtonInput from '@components/common/ButtonInput';
 import ConfirmationModal from '../CofirmationModal';
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import {LogOutIcon, ShoppingCart} from 'lucide-react-native';
+import {logout} from '@store/actions/actions';
 
 const Header = ({title, showLeft, cartIcon, logOutIcon}) => {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const cartItemCount = useSelector(state => state.cart.cartItems.length);
 
+  const dispatch = useDispatch();
+
   const handleLogOut = () => setModalVisible(true);
   const handleCancel = () => setModalVisible(false);
   const handleConfirm = () => {
     setModalVisible(false);
-    console.log('Logged Out');
+    dispatch(logout());
+    navigation.navigate('Login');
   };
 
   return (

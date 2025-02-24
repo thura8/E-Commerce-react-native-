@@ -8,16 +8,20 @@ import useCategoryHook from '@hooks/useCategoryHook';
 import {allProductsEndpoint} from '@api/apiClient';
 
 const ShopDeals = () => {
-  const {products} = useCategoryHook(allProductsEndpoint);
+  const {products, loading} = useCategoryHook(allProductsEndpoint);
 
   return (
     <View style={styles.productContainer}>
       <Text style={styles.title}>Shop Deals</Text>
-      <View style={styles.container}>
-        {products?.map((item, index) => (
-          <ProductCard key={index} product={item} />
-        ))}
-      </View>
+      {loading ? (
+        <Text>Loading ...</Text>
+      ) : (
+        <View style={styles.container}>
+          {products?.map((item, index) => (
+            <ProductCard key={index} product={item} />
+          ))}
+        </View>
+      )}
     </View>
   );
 };

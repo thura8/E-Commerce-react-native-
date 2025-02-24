@@ -55,3 +55,24 @@ export const removeFromFavorites = productId => ({
   type: 'REMOVE_FROM_FAVORITES',
   payload: productId,
 });
+
+// Auth
+
+export const login = user => ({
+  type: 'LOGIN',
+  payload: user,
+});
+
+export const logout = () => ({
+  type: 'LOGOUT',
+});
+
+export const updatedUser = updatedUser => ({
+  type: 'UPDATE_USER',
+  payload: updatedUser,
+});
+
+export const signup = user => ({
+  type: 'SIGNUP',
+  payload: user,
+});

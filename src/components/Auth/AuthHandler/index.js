@@ -1,5 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {login, signup} from '@store/actions/actions';
+import {useNavigation} from '@react-navigation/native';
 
 import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
@@ -8,6 +11,10 @@ import ButtonInput from '@components/common/ButtonInput';
 import InputBox from '../InputBox';
 
 const AuthHandler = ({isSignUp = false}) => {
+  const dispatch = useDispatch();
+  const users = useSelector(state => state.auth.users);
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -15,11 +22,31 @@ const AuthHandler = ({isSignUp = false}) => {
 
   const handleSubmit = () => {
     if (isSignUp) {
-      console.log('Username: ', username);
-      console.log('Checked: ', checked);
+      // SIGNUP
+      const newUser = {username, email, password};
+      dispatch(signup(newUser));
+      navigation.navigate('Login');
+
+      //console.log('User signed up:', newUser);
+
+      setUsername('');
+      setEmail('');
+      setPassword('');
+    } else {
+      // LOGIN
+      const user = users.find(
+        u => u.email === email && u.password === password,
+      );
+      if (user) {
+        dispatch(login(user));
+        navigation.navigate('MainTabs');
+        //console.log('User logged in:', user);
+        setEmail('');
+        setPassword('');
+      } else {
+        alert('Invalid credentials');
+      }
     }
-    console.log('Email: ', email);
-    console.log('Password: ', password);
   };
 
   return (

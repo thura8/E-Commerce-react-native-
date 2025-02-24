@@ -108,6 +108,7 @@ export const accountGeneral = [
   {
     icon: 'User',
     title: 'Account Details',
+    component: 'AccountDetails',
     subtitle: 'Edit your account information',
   },
   {

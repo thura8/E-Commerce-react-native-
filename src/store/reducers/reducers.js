@@ -1,4 +1,5 @@
 import {REQUEST, SUCCESS, FAILURE} from '@constants/common';
+import {User} from 'lucide-react-native';
 import {combineReducers} from 'redux';
 
 const createApiReducer = prefix => {
@@ -121,8 +122,45 @@ export const favoritesReducer = (state = {favorites: []}, action) => {
   }
 };
 
+//Auth reducer
+
+export const authReducer = (
+  state = {user: null, isAuthenticated: false, users: []},
+  action,
+) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: true,
+      };
+    case 'LOGOUT':
+      return {
+        ...state,
+        user: null,
+        isAuthenticated: false,
+      };
+    case 'UPDATE_USER':
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case 'SIGNUP':
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+        user: action.payload,
+        isAuthenticated: true,
+      };
+    default:
+      return state;
+  }
+};
+
 export const rootReducer = combineReducers({
   categories: createApiReducer('CATEGORIES'),
   cart: cartReducer,
   favorites: favoritesReducer,
+  auth: authReducer,
 });

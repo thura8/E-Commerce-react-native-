@@ -26,7 +26,6 @@ const InputBox = ({inputName, eye, value, onChanged}) => {
           }}
           icon={showPassword ? 'EyeOff' : 'Eye'}
           onPress={() => setShowPassword(!showPassword)}
-          imgStyle={{width: 28, height: 28}}
           iconSize={28}
           iconColor={colors.purple}
         />

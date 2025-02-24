@@ -12,6 +12,7 @@ import NothingPage from '@components/common/NothingPage';
 import PrivacySettings from '@components/Accounts/Privacy';
 import ContactUs from '@components/Accounts/ContactUs';
 import PaymentMethods from '@components/Accounts/PaymentMethod';
+import AccountDetails from '@components/Accounts/AccountDetails';
 
 //Auth imports
 import LoginScreen from '@screens/Auth/LoginScreen';
@@ -80,5 +81,9 @@ export const dashBoardNavigations = [
   {
     name: 'PaymentMethod',
     component: PaymentMethods,
+  },
+  {
+    name: 'AccountDetails',
+    component: AccountDetails,
   },
 ];
