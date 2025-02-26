@@ -13,6 +13,7 @@ import PrivacySettings from '@components/Accounts/Privacy';
 import ContactUs from '@components/Accounts/ContactUs';
 import PaymentMethods from '@components/Accounts/PaymentMethod';
 import AccountDetails from '@components/Accounts/AccountDetails';
+import DeliveryAddress from '@components/Accounts/DeliveryAddress';
 
 //Auth imports
 import LoginScreen from '@screens/Auth/LoginScreen';
@@ -85,5 +86,9 @@ export const dashBoardNavigations = [
   {
     name: 'AccountDetails',
     component: AccountDetails,
+  },
+  {
+    name: 'DeliveryAddress',
+    component: DeliveryAddress,
   },
 ];

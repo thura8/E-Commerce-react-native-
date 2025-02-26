@@ -120,6 +120,7 @@ export const accountGeneral = [
   {
     icon: 'MapPin',
     title: 'Delivery Addresses',
+    component: 'DeliveryAddress',
     subtitle: 'Edit or add new addresses',
   },
 ];
