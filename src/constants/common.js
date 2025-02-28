@@ -130,6 +130,7 @@ export const accountSetting = [
   {
     icon: 'Globe',
     title: 'Language',
+    component: 'Language',
     subtitle: '',
   },
   {
