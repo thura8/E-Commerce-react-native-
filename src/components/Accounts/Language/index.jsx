@@ -4,6 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import ContainerLayout from '@components/common/ContainerLayout';
 import ButtonInput from '@components/common/ButtonInput';
 import i18n, {loadLanguage, saveLanguage} from '@config/i18n/i18n';
+import {colors} from '@constants/colors';
 
 const Language = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
@@ -42,7 +43,7 @@ const Language = () => {
             btnTxt={lang === 'en' ? 'English' : 'Myanmar'}
             btnTxtStyle={styles.optionText}
             icon={selectedLanguage === lang ? 'CheckSquare' : 'Square'}
-            iconColor={selectedLanguage === lang ? '#007AFF' : '#ccc'}
+            iconColor={selectedLanguage === lang ? colors.purple : '#ccc'}
           />
         ))}
       </View>
@@ -51,10 +52,6 @@ const Language = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#F9FAFB',
-  },
   label: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -71,7 +68,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
     borderRadius: 8,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
   },
   optionText: {
     fontSize: 16,

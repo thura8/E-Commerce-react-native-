@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useGetCategories} from 'src/services/categoryServices';
+import {useGetCategories} from '@services/categoryServices';
 
 const useCategoryHook = (endpoint, params = {}) => {
   const [products, setProducts] = useState(null);
