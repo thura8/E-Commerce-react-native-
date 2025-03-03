@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import AccountItems from './AccountItems';
+import {t} from 'i18next';
 
 const AccountSection = ({title, data}) => {
   return (
@@ -12,9 +13,9 @@ const AccountSection = ({title, data}) => {
         <AccountItems
           key={index}
           icon={item.icon}
-          title={item.title}
+          title={t(item.title)}
           component={item.component}
-          subtitle={item.subtitle}
+          subtitle={t(item.subtitle)}
         />
       ))}
     </View>

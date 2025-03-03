@@ -6,6 +6,7 @@ import {updatedUser} from '@store/actions/actions';
 import ButtonInput from '@components/common/ButtonInput';
 import ContainerLayout from '@components/common/ContainerLayout';
 import {styles} from './styles';
+import {useTranslation} from 'react-i18next';
 
 const AccountDetails = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const AccountDetails = () => {
 
   const handleSave = () => {
     if (!username.trim() || !email.trim()) {
-      Alert.alert('Error', 'Please fill in all fields.');
+      Alert.alert(t('accError'), t('fillallfields'));
       return;
     }
 
@@ -30,13 +31,15 @@ const AccountDetails = () => {
     dispatch(updatedUser(updatedUserData));
 
     setIsEditing(false);
-    Alert.alert('Success', 'Your details have been updated.');
+    Alert.alert(t('accSuccess'), t('accnoti'));
   };
 
+  const {t} = useTranslation();
+
   return (
-    <ContainerLayout header headerTitle="Account Details">
+    <ContainerLayout header headerTitle={t('accDetails')}>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Username</Text>
+        <Text style={styles.label}>{t('username')}</Text>
         <TextInput
           style={styles.input}
           value={username}
@@ -47,7 +50,7 @@ const AccountDetails = () => {
       </View>
 
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Email</Text>
+        <Text style={styles.label}>{t('email')}</Text>
         <TextInput
           style={styles.input}
           value={email}
@@ -61,7 +64,7 @@ const AccountDetails = () => {
       <ButtonInput
         btnCtnStyle={styles.button}
         btnTxtStyle={styles.buttonText}
-        btnTxt={isEditing ? 'Save Changes' : 'Edit Details'}
+        btnTxt={isEditing ? t('savechanges') : t('edituraccinfo')}
         onPress={isEditing ? handleSave : () => setIsEditing(true)}
       />
     </ContainerLayout>

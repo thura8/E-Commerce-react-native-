@@ -64,5 +64,10 @@
   "contactus": "Contact us",
   "account": "Account",
   "logout": "Log out",
-  "rusureuwannalogout": "Are you sure you want to log out?"
+  "rusureuwannalogout": "Are you sure you want to log out?",
+  "savechanges": "Save Changes",
+  "accnoti": "Your details have been updated",
+  "accSuccess": "Success",
+  "accError": "Error",
+  "fillallfields": "Please fill in all fields"
 }

@@ -107,21 +107,21 @@ export const categoryList = [
 export const accountGeneral = [
   {
     icon: 'User',
-    title: 'Account Details',
+    title: 'accDetails',
     component: 'AccountDetails',
-    subtitle: 'Edit your account information',
+    subtitle: 'edituraccinfo',
   },
   {
     icon: 'CreditCard',
-    title: 'Payment Method',
+    title: 'paymentmethod',
     component: 'PaymentMethod',
-    subtitle: 'Add your credit or debit card',
+    subtitle: 'addurcreditordebitcard',
   },
   {
     icon: 'MapPin',
-    title: 'Delivery Addresses',
+    title: 'deliveryaddress',
     component: 'DeliveryAddress',
-    subtitle: 'Edit or add new addresses',
+    subtitle: 'editoraddnewaddress',
   },
 ];
 
@@ -129,19 +129,19 @@ export const accountGeneral = [
 export const accountSetting = [
   {
     icon: 'Globe',
-    title: 'Language',
+    title: 'language',
     component: 'Language',
     subtitle: '',
   },
   {
     icon: 'Info',
-    title: 'Privacy & Policy',
+    title: 'privacypolicy',
     component: 'Privacy',
     subtitle: '',
   },
   {
     icon: 'Phone',
-    title: 'Contact us',
+    title: 'contactus',
     component: 'ContactUs',
     subtitle: '',
   },
