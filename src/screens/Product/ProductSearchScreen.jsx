@@ -7,6 +7,7 @@ import useSearchHook from '@hooks/useSearchHook';
 import ProductCard from '@components/Product/ProductCard';
 import {ScrollView} from 'react-native-virtualized-view';
 import NothingPage from '@components/common/NothingPage';
+import {useTranslation} from 'react-i18next';
 
 const ProductSearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,10 +18,12 @@ const ProductSearchScreen = () => {
     [],
   );
 
+  const {t} = useTranslation();
+
   return (
     <ContainerLayout
       header
-      headerTitle="Explore Products"
+      headerTitle={t('exploreproducts')}
       noScroll
       loading={isLoading}>
       <SearchHeader
@@ -37,8 +40,8 @@ const ProductSearchScreen = () => {
         <NothingPage
           icon="Search"
           checkout={false}
-          title="Find something!"
-          subtitle="Search for your favorite products"
+          title={t('findsomething')}
+          subtitle={t('searchurfavproducts')}
         />
       )}
 
@@ -46,8 +49,8 @@ const ProductSearchScreen = () => {
         <NothingPage
           icon="Ban"
           checkout={false}
-          title={`No results found for "${searchQuery}"`}
-          subtitle="Please try again with a different keyword"
+          title={`${t('No results found for')} "${searchQuery}"`}
+          subtitle={t('Please try again with a different keyword')}
         />
       )}
 

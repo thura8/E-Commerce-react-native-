@@ -6,16 +6,18 @@ import {colors} from '@constants/colors';
 import {useNavigation} from '@react-navigation/native';
 import fonts from '@assets/fonts';
 import {Search} from 'lucide-react-native';
+import {useTranslation} from 'react-i18next';
 
 const DashboardSearchBar = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>
       <ButtonInput
         btnCtnStyle={styles.searchInputContainer}
         imgStyle={styles.icon}
-        btnTxt="What are you looking for?"
+        btnTxt={t('whatareyoulookingfor?')}
         btnTxtStyle={styles.searchText}
         onPress={() => navigation.navigate('Search')}>
         <Search color={colors.black} />

@@ -1,12 +1,13 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import {Search} from 'lucide-react-native';
 
 const SearchHeader = ({
-  placeholder = 'Search ...',
+  placeholder,
   value,
   onChangeText,
   showIcon = true,
@@ -14,12 +15,14 @@ const SearchHeader = ({
   containerStyle,
   inputStyle,
 }) => {
+  const {t} = useTranslation();
+
   return (
     <View style={[styles.searchContainer, containerStyle]}>
       {showIcon && <Search color={colors.black} style={{marginRight: 14}} />}
 
       <TextInput
-        placeholder={placeholder}
+        placeholder={placeholder || t('search ...')}
         placeholderTextColor={colors.gray}
         style={[styles.textInput, inputStyle]}
         autoFocus={autoFocus}

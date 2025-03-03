@@ -70,5 +70,7 @@
   "accnoti": "Your details have been updated",
   "accSuccess": "Success",
   "accError": "Error",
-  "fillallfields": "Please fill in all fields"
+  "fillallfields": "Please fill in all fields",
+  "No results found for": " No results found for",
+  "Please try again with a different keyword": "Please try again with a differenct keyword"
 }
