@@ -7,14 +7,17 @@ import {colors} from '@constants/colors';
 import ButtonInput from '@components/common/ButtonInput';
 import {useNavigation} from '@react-navigation/native';
 import {Bell, Heart} from 'lucide-react-native';
+import {useTranslation} from 'react-i18next';
 
 const DashboardHeader = () => {
   const navigation = useNavigation();
+
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.locationTitle}>Location</Text>
-        <Text style={styles.locationSubtitle}>Yangon, Myanmar</Text>
+        <Text style={styles.locationTitle}>{t('location')}</Text>
+        <Text style={styles.locationSubtitle}>{t('Yangon, Myanmar')}</Text>
       </View>
 
       <View style={styles.iconContainer}>
