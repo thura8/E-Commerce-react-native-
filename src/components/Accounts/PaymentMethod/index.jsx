@@ -6,6 +6,7 @@ import ContainerLayout from '@components/common/ContainerLayout';
 import {colors} from '@constants/colors';
 import ButtonInput from '@components/common/ButtonInput';
 import {styles} from './styles';
+import {useTranslation} from 'react-i18next';
 
 export default function PaymentMethods() {
   const [paymentMethods, setPaymentMethods] = useState([
@@ -15,6 +16,8 @@ export default function PaymentMethods() {
 
   const [showAddCard, setShowAddCard] = useState(false);
   const [newCard, setNewCard] = useState({number: '', expiry: '', cvc: ''});
+
+  const {t} = useTranslation();
 
   const handleSetDefault = id => {
     setPaymentMethods(
@@ -54,7 +57,7 @@ export default function PaymentMethods() {
   };
 
   return (
-    <ContainerLayout header headerTitle="Payment Methods">
+    <ContainerLayout header headerTitle={t('paymentmethods')}>
       {paymentMethods.map(method => (
         <View key={method.id} style={styles.cardItem}>
           <View style={styles.cardInfo}>
@@ -67,7 +70,7 @@ export default function PaymentMethods() {
             {!method.isDefault && (
               <ButtonInput
                 onPress={() => handleSetDefault(method.id)}
-                btnTxt={'Set as Default'}
+                btnTxt={t('setasdefault')}
                 btnTxtStyle={styles.actionText}
               />
             )}
@@ -88,7 +91,7 @@ export default function PaymentMethods() {
         <ButtonInput
           btnCtnStyle={styles.addButton}
           onPress={() => setShowAddCard(true)}
-          btnTxt={'Add New Card'}
+          btnTxt={t('+addnewcard')}
           btnTxtStyle={styles.addButtonText}>
           <Plus color={colors.white} size={20} />
         </ButtonInput>
@@ -96,7 +99,7 @@ export default function PaymentMethods() {
 
       {showAddCard && (
         <View style={styles.addCardForm}>
-          <Text style={styles.formTitle}>Add New Card</Text>
+          <Text style={styles.formTitle}>{t('+addnewcard')}</Text>
           <TextInput
             style={styles.input}
             placeholder="Card Number"
@@ -122,7 +125,7 @@ export default function PaymentMethods() {
           <ButtonInput
             btnCtnStyle={styles.submitButton}
             onPress={handleAddCard}
-            btnTxt={'Add Card'}
+            btnTxt={t('addcard')}
             btnTxtStyle={styles.submitButtonText}
           />
         </View>

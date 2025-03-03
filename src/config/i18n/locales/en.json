@@ -72,5 +72,11 @@
   "accError": "Error",
   "fillallfields": "Please fill in all fields",
   "No results found for": " No results found for",
-  "Please try again with a different keyword": "Please try again with a differenct keyword"
+  "Please try again with a different keyword": "Please try again with a differenct keyword",
+  "paymentmethods": "Payment Methods",
+  "setasdefault": "Set as Default",
+  "+addnewcard": "Add New Card",
+  "addcard": "Add Card",
+  "removeCard": "Remove Card",
+  "sureremovecard": "Are you sure you want to remove this card?"
 }

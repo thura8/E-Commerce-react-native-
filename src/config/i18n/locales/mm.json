@@ -72,5 +72,9 @@
   "accError": "အမှားအယွင်း",
   "fillallfields": "ကျေးဇူးပြု၍ အကွက်အားလုံးကို ဖြည့်ပါ",
   "No results found for": "ရှာဖွေမှုရလဒ်မရှိပါ",
-  "Please try again with a different keyword": "ကျေးဇူးပြု၍အခြားစကားလုံးဖြင့်ထပ်ကြိုးစားပါ"
+  "Please try again with a different keyword": "ကျေးဇူးပြု၍အခြားစကားလုံးဖြင့်ထပ်ကြိုးစားပါ",
+  "paymentmethods": "ငွေပေးချေမှုနည်းလမ်းများ",
+  "setasdefault": "ပုံသေ သတ်မှတ်ပါ",
+  "+addnewcard": "ကတ်အသစ်ထည့်ပါ",
+  "addcard": "ကတ်ထည့်ပါ"
 }
