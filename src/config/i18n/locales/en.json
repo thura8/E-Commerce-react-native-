@@ -88,5 +88,8 @@
   "enterurstate": "Enter your state",
   "zipcode": "Zip Code",
   "enterurzipcode": "Enter your zip code",
-  "submitaddress": "Submit Address"
+  "submitaddress": "Submit Address",
+  "languages": "Languages",
+  "languageOptions": "Language Options",
+  "myanmar": "Myanmar"
 }

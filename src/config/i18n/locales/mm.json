@@ -88,5 +88,8 @@
   "enterurstate": "သင့်ပြည်နယ်အမည်ထည့်ပါ",
   "zipcode": "စာတိုက်သင်္ကေတ",
   "enterurzipcode": "သင့်စာတိုက်သင်္ကေတထည့်ပါ",
-  "submitaddress": "လိပ်စာတင်ပါ"
+  "submitaddress": "လိပ်စာတင်ပါ",
+  "languages": "ဘာသာစကားများ",
+  "languageOptions": "ဘာသာစကားရွေးချယ်မှုများ",
+  "myanmar": "မြန်မာ"
 }
