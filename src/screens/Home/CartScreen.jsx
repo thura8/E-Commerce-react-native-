@@ -4,10 +4,13 @@ import ProductCardRow from '@components/Product/ProductCardRow';
 import {useDispatch, useSelector} from 'react-redux';
 import {removeFromCart, updateQuantity} from '@store/actions/actions';
 import NothingPage from '@components/common/NothingPage';
+import {useTranslation} from 'react-i18next';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
   const {cartItems} = useSelector(state => state.cart);
+
+  const {t} = useTranslation();
 
   const handleQuantityChange = (productId, newQuantity) => {
     dispatch(updateQuantity(productId, newQuantity));
@@ -20,16 +23,16 @@ const CartScreen = () => {
   return (
     <ContainerLayout
       header
-      headerTitle="My Cart"
+      headerTitle={t('mycart')}
       leftArrow={false}
       checkout
       isCart>
       {cartItems.length === 0 ? (
         <NothingPage
           icon="ShoppingCart"
-          title="Your cart is empty"
-          description="appear here "
-          subtitle="When you add products, they'll"
+          title={t('yourcartisempty')}
+          description={t('appearhere')}
+          subtitle={t('whenuaddproducts')}
           checkout={false}
         />
       ) : (

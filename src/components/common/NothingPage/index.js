@@ -3,27 +3,32 @@ import React from 'react';
 import * as LucideIcons from 'lucide-react-native';
 import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
-
 import ButtonInput from '../ButtonInput';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 const NothingPage = ({
   icon = 'ShoppingCart',
-  title = 'Order Successful!',
-  subtitle = 'You have successfully made order.',
+  title,
+  subtitle,
   description = '',
   iconSize = 56,
   iconColor = colors.white,
   checkout = true,
 }) => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
+
+  const pageTitle = title || t('ordersuccess');
+  const pageSubtitle = subtitle || t('youhavemadesuccessfullymadeorder.');
+
   return (
     <View style={styles.container}>
       <NothingPageContent
         icon={icon}
-        title={title}
-        subtitle={subtitle}
+        title={pageTitle}
+        subtitle={pageSubtitle}
         description={description}
         iconSize={iconSize}
         iconColor={checkout ? colors.hotPink : iconColor}
@@ -35,7 +40,7 @@ const NothingPage = ({
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             style={styles.placeOrderButton}>
-            <Text style={styles.placeOrderText}>Continue Shopping</Text>
+            <Text style={styles.placeOrderText}>{t('continueshopping')}</Text>
           </LinearGradient>
         </ButtonInput>
       )}
@@ -74,6 +79,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    backgroundColor: colors.lightPink,
   },
   icon: {
     marginBottom: 12,

@@ -20,6 +20,7 @@ import {
 import {connect} from 'react-redux';
 import ConfirmationModal from '@components/common/CofirmationModal';
 import {clearCart} from '@store/actions/actions';
+import {useTranslation} from 'react-i18next';
 
 const CheckOutScreen = ({
   totalOriginalPrice,
@@ -35,6 +36,8 @@ const CheckOutScreen = ({
 
   const handlePlaceOrder = () => setIsModalVisible(true);
   const handleCancel = () => setIsModalVisible(false);
+
+  const {t} = useTranslation();
 
   const handleConfirmOrder = () => {
     setIsModalVisible(false);
@@ -115,23 +118,23 @@ const CheckOutScreen = ({
 
         <View style={styles.summary}>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Subtotal</Text>
+            <Text style={styles.summaryLabel}>{t('subtotal')}:</Text>
             <Text style={styles.summaryValue}>
               {formattedMoney(totalOriginalPrice)}
             </Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Delivery Fee</Text>
+            <Text style={styles.summaryLabel}>{t('deliveryfee')}:</Text>
             <Text style={styles.summaryValue}>
               {formattedMoney(deliveryFee)}
             </Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Discount</Text>
+            <Text style={styles.summaryLabel}>{t('discount')}:</Text>
             <Text style={styles.summaryValue}>-{formattedMoney(discount)}</Text>
           </View>
           <View style={[styles.summaryRow, styles.totalRow]}>
-            <Text style={styles.totalLabel}>Total</Text>
+            <Text style={styles.totalLabel}>{t('total')}:</Text>
             <Text style={styles.totalValue}>{formattedMoney(total)}</Text>
           </View>
 
@@ -141,7 +144,7 @@ const CheckOutScreen = ({
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
               style={styles.placeOrderButton}>
-              <Text style={styles.placeOrderText}>Place Order</Text>
+              <Text style={styles.placeOrderText}>{t('placeorder')}</Text>
             </LinearGradient>
           </ButtonInput>
         </View>
@@ -149,10 +152,10 @@ const CheckOutScreen = ({
 
       {isModalVisible && (
         <ConfirmationModal
-          title={'Order Confirm'}
-          message={'Confirm your purchase to proceed.'}
-          confirmText="Place Order"
-          cancelText="Cancel"
+          title={t('orderconfirm')}
+          message={t('confirmurpurchasetoproceed')}
+          confirmText={t('placeorder')}
+          cancelText={t('cancel')}
           onCancel={handleCancel}
           onConfirm={handleConfirmOrder}
           checkout
@@ -163,7 +166,7 @@ const CheckOutScreen = ({
         <View style={styles.loadingContainer}>
           <View style={styles.loadingContent}>
             <ActivityIndicator size="large" color={colors.hotPink} />
-            <Text style={styles.loadingText}>Processing your order...</Text>
+            <Text style={styles.loadingText}>{t('processingurorder')}</Text>
           </View>
         </View>
       </Modal>

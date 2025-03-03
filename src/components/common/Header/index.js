@@ -9,6 +9,7 @@ import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
 import {LogOutIcon, ShoppingCart} from 'lucide-react-native';
 import {logout} from '@store/actions/actions';
+import {useTranslation} from 'react-i18next';
 
 const Header = ({title, showLeft, cartIcon, logOutIcon}) => {
   const navigation = useNavigation();
@@ -16,6 +17,8 @@ const Header = ({title, showLeft, cartIcon, logOutIcon}) => {
   const cartItemCount = useSelector(state => state.cart.cartItems.length);
 
   const dispatch = useDispatch();
+
+  const {t} = useTranslation();
 
   const handleLogOut = () => setModalVisible(true);
   const handleCancel = () => setModalVisible(false);
@@ -56,10 +59,10 @@ const Header = ({title, showLeft, cartIcon, logOutIcon}) => {
 
       <ConfirmationModal
         visible={isModalVisible}
-        title="Logout"
-        message="Are you sure you want to log out?"
-        confirmText="Log out"
-        cancelText="Cancel"
+        title={t('logout')}
+        message={t('rusureuwannalogout')}
+        confirmText={t('logout')}
+        cancelText={t('cancel')}
         onCancel={handleCancel}
         onConfirm={handleConfirm}
       />

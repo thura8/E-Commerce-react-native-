@@ -15,6 +15,7 @@ import {
 import {formattedMoney} from '@helper/index';
 import {useNavigation} from '@react-navigation/native';
 import ButtonInput from '../ButtonInput';
+import {useTranslation} from 'react-i18next';
 
 const CheckOutBtn = ({
   subtotal,
@@ -26,6 +27,8 @@ const CheckOutBtn = ({
   const [isExpanded, setIsExpanded] = useState(true);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const arrowRotation = useRef(new Animated.Value(0)).current;
+
+  const {t} = useTranslation();
 
   const isCheckoutDisabled = total <= 20;
 
@@ -75,22 +78,22 @@ const CheckOutBtn = ({
 
       <View style={styles.priceDetailsContainer}>
         <View style={styles.priceRow}>
-          <Text style={styles.label}>Subtotal:</Text>
+          <Text style={styles.label}>{t('subtotal')}:</Text>
           <Text style={styles.value}>{formattedMoney(totalOriginalPrice)}</Text>
         </View>
         <View style={styles.priceRow}>
-          <Text style={styles.label}>Delivery Fee:</Text>
+          <Text style={styles.label}>{t('deliveryfee')}:</Text>
           <Text style={styles.value}>{formattedMoney(deliveryFee)}</Text>
         </View>
         <View style={styles.priceRow}>
-          <Text style={styles.label}>Discount:</Text>
+          <Text style={styles.label}>{t('discount')}:</Text>
           <Text style={[styles.value, {color: colors.red}]}>
             -{formattedMoney(discount)}
           </Text>
         </View>
         <View style={styles.separator} />
         <View style={styles.priceRow}>
-          <Text style={styles.totalLabel}>Total:</Text>
+          <Text style={styles.totalLabel}>{t('total')}:</Text>
           <Text style={styles.totalValue}>{formattedMoney(total)}</Text>
         </View>
       </View>
@@ -117,7 +120,7 @@ const CheckOutBtn = ({
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}>
           <Text style={styles.buttonText}>
-            {isCheckoutDisabled ? 'Buy something first' : 'Proceed to Checkout'}
+            {isCheckoutDisabled ? t('buysmth') : t('proceed2checkout')}
           </Text>
         </LinearGradient>
       </ButtonInput>
