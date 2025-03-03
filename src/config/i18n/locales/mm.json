@@ -76,5 +76,17 @@
   "paymentmethods": "ငွေပေးချေမှုနည်းလမ်းများ",
   "setasdefault": "ပုံသေ သတ်မှတ်ပါ",
   "+addnewcard": "ကတ်အသစ်ထည့်ပါ",
-  "addcard": "ကတ်ထည့်ပါ"
+  "addcard": "ကတ်ထည့်ပါ",
+  "removeCard": "ကတ်ဖြုတ်ပါ",
+  "sureremovecard": "ဤကတ်ကို ဖြုတ်လိုပါသလား?",
+  "deliveryaddresses": "ပို့ဆောင်ရန်လိပ်စာ",
+  "street": "လမ်း",
+  "enterurstreet": "သင့်လမ်းအမည်ထည့်ပါ",
+  "city": "မြို့",
+  "enterurcity": "သင့်မြို့အမည်ထည့်ပါ",
+  "state": "ပြည်နယ်",
+  "enterurstate": "သင့်ပြည်နယ်အမည်ထည့်ပါ",
+  "zipcode": "စာတိုက်သင်္ကေတ",
+  "enterurzipcode": "သင့်စာတိုက်သင်္ကေတထည့်ပါ",
+  "submitaddress": "လိပ်စာတင်ပါ"
 }

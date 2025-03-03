@@ -78,5 +78,15 @@
   "+addnewcard": "Add New Card",
   "addcard": "Add Card",
   "removeCard": "Remove Card",
-  "sureremovecard": "Are you sure you want to remove this card?"
+  "sureremovecard": "Are you sure you want to remove this card?",
+  "deliveryaddresses": "Delivery Address",
+  "street": "Street",
+  "enterurstreet": "Enter your street",
+  "city": "City",
+  "enterurcity": "Enter your city",
+  "state": "State",
+  "enterurstate": "Enter your state",
+  "zipcode": "Zip Code",
+  "enterurzipcode": "Enter your zip code",
+  "submitaddress": "Submit Address"
 }

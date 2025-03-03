@@ -1,20 +1,20 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
   StyleSheet,
   KeyboardAvoidingView,
 } from 'react-native';
-
-import {Home, Landmark as City, Flag, Mail, Check} from 'lucide-react-native';
+import {useTranslation} from 'react-i18next';
+import {Home, Landmark as City, Flag, Mail} from 'lucide-react-native';
 import ContainerLayout from '@components/common/ContainerLayout';
-
 import {colors} from '@constants/colors';
 import fonts from '@assets/fonts';
+import ButtonInput from '@components/common/ButtonInput';
 
 const DeliveryAddress = () => {
+  const {t} = useTranslation();
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -49,42 +49,48 @@ const DeliveryAddress = () => {
   );
 
   return (
-    <ContainerLayout header={true} headerTitle="Delivery Address">
+    <ContainerLayout header={true} headerTitle={t('deliveryaddresses')}>
       <KeyboardAvoidingView style={styles.keyboardAvoidingView}>
         <View style={styles.card}>
           {renderInput(
-            'Street',
+            t('street'),
             street,
             setStreet,
             <Home color={colors.purple} size={24} />,
-            'Enter your street',
+            t('enterurstreet'),
           )}
           {renderInput(
-            'City',
+            t('city'),
             city,
             setCity,
             <City color={colors.purple} size={24} />,
-            'Enter your city',
+            t('enterurcity'),
           )}
           {renderInput(
-            'State',
+            t('state'),
             state,
             setState,
             <Flag color={colors.purple} size={24} />,
-            'Enter your state',
+            t('enterurstate'),
           )}
           {renderInput(
-            'Zip Code',
+            t('zipcode'),
             zipCode,
             setZipCode,
             <Mail color={colors.purple} size={24} />,
-            'Enter your zip code',
+            t('enterurzipcode'),
             'numeric',
           )}
-          <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-            <Check color={colors.white} size={24} />
-            <Text style={styles.submitButtonText}>Submit Address</Text>
-          </TouchableOpacity>
+
+          <ButtonInput
+            btnCtnStyle={styles.submitButton}
+            onPress={handleSubmit}
+            icon={'Check'}
+            iconColor={colors.white}
+            iconSize={24}
+            btnTxt={t('submitaddress')}
+            btnTxtStyle={styles.submitButtonText}
+          />
         </View>
       </KeyboardAvoidingView>
     </ContainerLayout>
