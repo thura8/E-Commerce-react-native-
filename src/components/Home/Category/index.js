@@ -9,12 +9,15 @@ import {fetchCategories} from '@store/actions/actions';
 import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
 import ButtonInput from '@components/common/ButtonInput';
+import {useTranslation} from 'react-i18next';
 
 const Category = () => {
   const dispatch = useDispatch();
   const {data, loading, error} = useSelector(state => state.categories);
 
   const navigation = useNavigation();
+
+  const {t} = useTranslation();
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -29,9 +32,9 @@ const Category = () => {
   return (
     <>
       <View style={styles.header}>
-        <Text style={styles.categoryTitle}>Categories</Text>
+        <Text style={styles.categoryTitle}>{t('categories')}</Text>
         <ButtonInput
-          btnTxt="See All"
+          btnTxt={t('seeall')}
           btnTxtStyle={styles.seeAllText}
           onPress={() => navigation.navigate('Category')}
         />
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
   },
   seeAllText: {
     fontSize: 14,
-    color: colors.gray,
+    color: colors.darkGray,
     fontFamily: fonts.montReg,
   },
 });

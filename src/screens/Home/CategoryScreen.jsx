@@ -8,11 +8,14 @@ import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
+import {useTranslation} from 'react-i18next';
 
 const CategoryScreen = () => {
   const {data} = useSelector(state => state.categories);
 
   const navigation = useNavigation();
+
+  const {t} = useTranslation();
 
   const handleCategoryProducts = selectedCategory => {
     navigation.navigate('CategoryProducts', {
@@ -23,10 +26,10 @@ const CategoryScreen = () => {
   return (
     <ContainerLayout
       header
-      headerTitle="Explore & Discover"
+      headerTitle={t('exploreanddiscover')}
       leftArrow={false}
       noScroll>
-      <Text style={styles.allCategoriesTitle}>All Categories</Text>
+      <Text style={styles.allCategoriesTitle}>{t('allcategories')}</Text>
       <CategoryList
         category={data}
         layout="vertical"

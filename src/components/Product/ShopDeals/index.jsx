@@ -6,13 +6,16 @@ import fonts from '@assets/fonts';
 import {colors} from '@constants/colors';
 import useCategoryHook from '@hooks/useCategoryHook';
 import {allProductsEndpoint} from '@api/apiClient';
+import {useTranslation} from 'react-i18next';
 
 const ShopDeals = () => {
   const {products, loading} = useCategoryHook(allProductsEndpoint);
 
+  const {t} = useTranslation();
+
   return (
     <View style={styles.productContainer}>
-      <Text style={styles.title}>Shop Deals</Text>
+      <Text style={styles.title}>{t('shopdeals')}</Text>
       {loading ? (
         <Text>Loading ...</Text>
       ) : (
