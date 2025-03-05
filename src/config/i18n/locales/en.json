@@ -110,5 +110,15 @@
   "datacontrol": "Data Control",
   "downloadmydata": "Download My Data",
   "deleteaccount": "Delete Account",
-  "saveprivacysettings": "Save Privacy Settings"
+  "saveprivacysettings": "Save Privacy Settings",
+  "contact": "Contact Us",
+  "name": "Name",
+  "Email": "Email",
+  "Message": "Message",
+  "entername": "Enter your name",
+  "enteremail": "Enter your email",
+  "entermessage": "Enter your message",
+  "sendmessage": "Send Message",
+  "contactInfo": "Contact Infomation",
+  "followus": "Follow Us"
 }

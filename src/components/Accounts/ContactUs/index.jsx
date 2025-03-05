@@ -13,6 +13,7 @@ import ContainerLayout from '@components/common/ContainerLayout';
 import {colors} from '@constants/colors';
 import ButtonInput from '@components/common/ButtonInput';
 import {styles} from './styles';
+import {useTranslation} from 'react-i18next';
 
 export default function ContactUs() {
   const [name, setName] = useState('');
@@ -31,46 +32,48 @@ export default function ContactUs() {
     Linking.openURL(url).catch(err => console.error('An error occurred', err));
   };
 
+  const {t} = useTranslation();
+
   return (
-    <ContainerLayout header headerTitle="Contact Us">
+    <ContainerLayout header headerTitle={t('contact')}>
       <View style={styles.form}>
-        <Text style={styles.label}>Name</Text>
+        <Text style={styles.label}>{t('name')}</Text>
         <TextInput
           style={styles.input}
           value={name}
           onChangeText={setName}
-          placeholder="Enter your name"
+          placeholder={t('entername')}
         />
 
-        <Text style={styles.label}>Email</Text>
+        <Text style={styles.label}>{t('Email')}</Text>
         <TextInput
           style={styles.input}
           value={email}
           onChangeText={setEmail}
-          placeholder="Enter your email"
+          placeholder={t('enteremail')}
           keyboardType="email-address"
         />
 
-        <Text style={styles.label}>Message</Text>
+        <Text style={styles.label}>{t('Message')}</Text>
         <TextInput
           style={[styles.input, styles.messageInput]}
           value={message}
           onChangeText={setMessage}
-          placeholder="Enter your message"
+          placeholder={t('entermessage')}
           multiline
         />
 
         <ButtonInput
           btnCtnStyle={styles.submitButton}
           onPress={handleSubmit}
-          btnTxt={'Send Message'}
+          btnTxt={t('sendmessage')}
           btnTxtStyle={styles.submitButtonText}>
           <Send color={colors.white} size={20} />
         </ButtonInput>
       </View>
 
       <View style={styles.contactInfo}>
-        <Text style={styles.sectionTitle}>Contact Information</Text>
+        <Text style={styles.sectionTitle}>{t('contactInfo')}</Text>
 
         <View style={styles.infoItem}>
           <Phone color={colors.hotPink} size={20} />
@@ -91,7 +94,7 @@ export default function ContactUs() {
       </View>
 
       <View style={styles.socialLinks}>
-        <Text style={styles.sectionTitle}>Follow Us</Text>
+        <Text style={styles.sectionTitle}>{t('followus')}</Text>
         <View style={styles.socialIcons}>
           <ButtonInput
             btnCtnStyle={styles.socialIconsContainer}

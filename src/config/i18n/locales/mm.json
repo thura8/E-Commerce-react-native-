@@ -110,5 +110,15 @@
   "datacontrol": "ဒေတာထိန်းချုပ်မှု",
   "downloadmydata": "ဒေတာဒေါင်းလုပ်ဆွဲပါ",
   "deleteaccount": "အကောင့်ဖျက်ပါ",
-  "saveprivacysettings": "ကိုယ်ရေးချိန်ညှိချက်သိမ်းပါ"
+  "saveprivacysettings": "ကိုယ်ရေးချိန်ညှိချက်သိမ်းပါ",
+  "contact": "ဆက်သွယ်ရန်",
+  "name": "အမည်",
+  "Email": "အီးမေးလ်",
+  "Message": "မက်ဆေ့ချ်",
+  "entername": "သင့်အမည်ထည့်ပါ",
+  "enteremail": "သင့်အီးမေးလ်ထည့်ပါ",
+  "entermessage": "သင့်မက်ဆေ့ချ်ထည့်ပါ",
+  "sendmessage": "မက်ဆေ့ချ်ပို့ပါ",
+  "contactInfo": "ဆက်သွယ်ရန်အချက်အလက်",
+  "followus": "ကျွန်ုပ်တို့ကို follow ပါ"
 }
