@@ -1,8 +1,8 @@
-🛍️ E-commerce React Native App
+# 🛍️ E-commerce React Native App
 
 A cross-platform e-commerce mobile app built with React Native. The app provides a seamless and modern shopping experience, complete with secure authentication, product listings, multi-language support, and smooth navigation.
 
-✨ Features
+## ✨ Features
 
 Beautiful and responsive UI for Android and iOS
 
@@ -24,7 +24,7 @@ Lottie animations and linear gradients
 
 Code quality ensured with ESLint and Prettier
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 React Native 0.71
 
